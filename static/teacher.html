@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>教師後台｜干涉與繞射</title>
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="./">干涉與繞射</a><span class="tiny">教師後台</span><span class="spacer"></span><a class="btn small ghost" href="./#/credits">資料來源與授權</a><a class="btn small" href="./">← 回學生端</a></header>
+  <main id="t"></main>
+  <footer class="site-foot">教材內容整理自「干涉與繞射」單元十份設計文件（設計者：江長屹／台師大科教所）。照片與外部資源出處見 <a href="./#/credits">資料來源與授權</a>。</footer>
+  <script src="localapi.js"></script>
+  <script>
+  (function () {
+    const $ = (s) => document.querySelector(s);
+    const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    const root = $("#t");
+    let pin = sessionStorage.getItem("tpin") || "";
+    let T = null, C = null, MODE = "local";
+    let imported = []; // 匯入的學生 JSON
+    const STAGES = ["未開始", "寫下直覺", "比對畫面", "初始地圖", "新地圖"];
+    const STATUS = { open: "還不確定", partial: "部分理解", answered: "我能回答了" };
+
+    async function boot() {
+      [T, C] = await Promise.all([fetch("teacher.json").then((r) => r.json()), fetch("content.json").then((r) => r.json())]);
+      try { const r = await fetch("api/status", { cache: "no-store" }); MODE = r.ok && (await r.json()).ok ? "server" : "local"; } catch { MODE = "local"; }
+      if (MODE === "local") { await LocalAPI.init(); tabs("students"); }
+      else pin ? start() : loginView();
+    }
+    function loginView(msg) {
+      root.innerHTML = `<div class="card narrow"><h2>教師後台</h2><label class="field"><span>教師密碼（啟動伺服器時顯示）</span><input id="pin" type="password" inputmode="numeric" autocomplete="off"></label>
+        <button class="btn primary big" id="go">進入</button><p class="warn tiny">${esc(msg || "")}</p></div>`;
+      const go = () => { pin = $("#pin").value.trim(); sessionStorage.setItem("tpin", pin); start(); };
+      $("#go").onclick = go;
+      $("#pin").onkeydown = (e) => e.key === "Enter" && go();
+    }
+    async function start() {
+      const r = await fetch(`api/teacher/overview?pin=${encodeURIComponent(pin)}`);
+      if (!r.ok) return loginView(pin ? "密碼錯誤" : "");
+      tabs("students");
+    }
+    function tabs(cur) {
+      const list = [["students", "學生紀錄"], ...T.sections.map((s) => [s.id, s.title])];
+      root.innerHTML = `<div class="t-tabs">${list.map(([id, t]) => `<button class="btn small ${id === cur ? "on" : ""}" data-id="${id}">${esc(t)}</button>`).join("")}</div><div id="tb"></div>`;
+      root.querySelectorAll(".t-tabs .btn").forEach((b) => (b.onclick = () => tabs(b.dataset.id)));
+      if (cur === "students") students();
+      else section(T.sections.find((s) => s.id === cur));
+    }
+    const qTitle = {};
+    const C_index = () => C.chapters.forEach((c) => c.steps.forEach((s) => { if (s.qid) qTitle[s.qid] = `第${c.id}章｜${s.title}`; }));
+
+    async function loadStudents() {
+      let list = [];
+      if (MODE === "server") {
+        const r = await fetch(`api/teacher/export?fmt=json&pin=${encodeURIComponent(pin)}`);
+        list = (await r.json()).students;
+      } else list = LocalAPI.allJSON().students;
+      const map = new Map(list.map((s) => [s["學生代碼"], s]));
+      imported.forEach((s) => map.set(s["學生代碼"], s));
+      return [...map.values()];
+    }
+    function summary(s) {
+      const A = s["目前作答"] || {};
+      const pos = s["位置"] || {};
+      const ql = (A.questions || {}).list || [];
+      return {
+        code: s["學生代碼"], anon: String(s["學生代碼"]).startsWith("匿名-"), last: s["最後活動"],
+        where: pos.last ? `第${pos.last.ch}章 步驟${pos.last.step + 1}` : "—",
+        chapters: C.chapters.map((c) => {
+          const m = (pos.max || {})[c.id];
+          const z = A["quiz_c" + c.id];
+          return `${m === undefined ? "—" : Math.round(((m + 1) / c.steps.length) * 100) + "%"}／${z && z.first ? z.first.score + "/" + z.first.total : "—"}`;
+        }),
+        map: STAGES[(A.map || {}).stage || 0], q: ql.length, qa: ql.filter((q) => q.status === "answered").length,
+        asks: (s["小波對話"] || []).filter((d) => d["角色"] === "學生").length,
+        handoff: (s["小波對話"] || []).filter((d) => d["轉教師"]).length,
+        events: (s["操作紀錄"] || []).length,
+      };
+    }
+    function download(name, text, type) {
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([text], { type }));
+      a.download = name; document.body.append(a); a.click(); a.remove();
+    }
+    async function students() {
+      C_index();
+      const list = await loadStudents();
+      const tb = $("#tb");
+      const note = MODE === "server"
+        ? `<p class="tiny">伺服器模式：顯示所有連到這台伺服器的學生紀錄。</p>`
+        : `<div class="callout"><b>公開網站版（GitHub Pages）</b>：學生的紀錄只存在學生自己的瀏覽器。請學生在「我的紀錄」下載 JSON 後交給您，再按「匯入學生紀錄」一次選取多個檔案即可在此彙整。<br><span class="tiny">需要即時收集全班紀錄時，請在教室電腦執行 <code>python3 server.py</code>（見 README）。</span></div>`;
+      tb.innerHTML = `<div class="card">${note}<div class="btn-row"><b>共 ${list.length} 人</b>
+        <label class="btn small">📥 匯入學生紀錄（JSON，可多選）<input id="imp" type="file" accept=".json,application/json" multiple hidden></label>
+        <button class="btn small" id="xcsv">匯出全部 CSV</button><button class="btn small" id="xjson">匯出全部 JSON</button>
+        <button class="btn small" id="rf">重新整理</button>${imported.length ? `<button class="btn small ghost" id="clr">清除匯入的 ${imported.length} 筆</button>` : ""}</div>
+        <p class="warn tiny" id="imsg"></p>
+        ${list.length ? `<div class="tbl-wrap"><table class="tbl"><tr><th>學生代碼</th><th>最後活動</th><th>目前位置</th>${C.chapters.map((c) => `<th>第${c.id}章<br><span class="tiny">進度／測驗首次</span></th>`).join("")}<th>學習地圖</th><th>提問區</th><th>問小波</th><th>轉教師</th><th>紀錄筆數</th><th></th></tr>
+        ${list.map((s) => { const x = summary(s); return `<tr><th>${esc(x.code)}${x.anon ? ' <span class="tag">匿名</span>' : ""}</th><td>${esc(x.last)}</td><td>${x.where}</td>${x.chapters.map((v) => `<td>${v}</td>`).join("")}<td>${x.map}</td><td>${x.q}（答 ${x.qa}）</td><td>${x.asks}</td><td>${x.handoff ? `<span class="flag">🙋 ${x.handoff}</span>` : "—"}</td><td>${x.events}</td><td><button class="btn small" data-c="${esc(x.code)}">查看</button></td></tr>`; }).join("")}</table></div>`
+          : `<p class="tiny">目前沒有紀錄。${MODE === "local" ? "請匯入學生下載的 JSON 檔。" : ""}</p>`}</div><div id="det"></div>`;
+      $("#rf").onclick = students;
+      if ($("#clr")) $("#clr").onclick = () => { imported = []; students(); };
+      $("#xjson").onclick = () => download("全班學習紀錄.json", JSON.stringify({ 教材版本: C.version, students: list }, null, 2), "application/json");
+      $("#xcsv").onclick = () => download("全班學習紀錄.csv", LocalAPI.exportCSV({ 教材版本: C.version, students: list }), "text/csv;charset=utf-8");
+      $("#imp").onchange = async (e) => {
+        let ok = 0, bad = [];
+        for (const f of e.target.files) {
+          try {
+            const j = JSON.parse(await f.text());
+            const arr = Array.isArray(j.students) ? j.students : [];
+            if (!arr.length || !arr[0]["學生代碼"]) throw 0;
+            arr.forEach((s) => { imported = imported.filter((x) => x["學生代碼"] !== s["學生代碼"]); imported.push(s); ok++; });
+          } catch { bad.push(f.name); }
+        }
+        await students();
+        $("#imsg").textContent = `已匯入 ${ok} 位學生。` + (bad.length ? `無法讀取：${bad.join("、")}（請確認是本教材下載的學習紀錄 JSON）` : "");
+      };
+      tb.querySelectorAll("[data-c]").forEach((b) => (b.onclick = () => detail(list.find((s) => s["學生代碼"] === b.dataset.c))));
+    }
+    function detail(s) {
+      const code = s["學生代碼"];
+      const A = s["目前作答"] || {};
+      const fmtv = (v) => typeof v === "object" && v ? Object.entries(v).filter(([k]) => !k.startsWith("_")).map(([k, x]) => `<div><span class="tiny">${esc(k)}：</span>${esc(typeof x === "object" ? JSON.stringify(x) : x)}</div>`).join("") : esc(v);
+      const skip = new Set(["map", "questions"]);
+      const ans = Object.entries(A).filter(([q]) => !skip.has(q)).sort().map(([q, v]) => `<div class="t-card"><h4>${esc(qTitle[q] || q)}（${esc(q)}）</h4>
+        ${v.draft ? `<b>初稿</b>${fmtv(v.draft)}` : ""}${v.revision ? `<b>修訂</b>${fmtv(v.revision)}<div><span class="tiny">修訂理由：</span>${esc(v.reason)}</div>` : ""}
+        ${!v.draft && !v.revision ? fmtv(v) : ""}<div class="tiny">更新：${esc(v._updated)}</div></div>`).join("");
+      const mp = A.map || {};
+      const mapHtml = mp.stage ? `<div class="t-card"><h4>學習地圖（${STAGES[mp.stage]}）</h4>
+        <dl class="kv"><dt>干涉直覺</dt><dd>${esc((mp.intuition || {}).interference)}</dd><dt>繞射直覺</dt><dd>${esc((mp.intuition || {}).diffraction)}</dd><dt>生活例子</dt><dd>${esc((mp.intuition || {}).life)}</dd>
+        <dt>畫面比對</dt><dd>${Object.entries(mp.scenes || {}).map(([k, v]) => esc(k + "：" + (v.sim || "") + (v.note ? "（" + v.note + "）" : ""))).join("；") || "—"}</dd>
+        <dt>想法處理</dt><dd>${(mp.ideas || []).map((x) => esc("「" + x.text + "」→ " + (x.place === "map" ? "概念圖" : "旁邊") + (x.misc ? "（迷思候選）" : "") + (x.rev ? "；修正：" + x.rev.status + (x.rev.status === "修正" ? "「" + x.rev.text + "」" : "") : ""))).join("<br>")}</dd>
+        <dt>新增連結</dt><dd>${(mp.added || []).map((x) => esc(x.text + " → " + x.node)).join("<br>") || "—"}</dd></dl></div>` : "<p class='tiny'>尚未開始學習地圖</p>";
+      const qHtml = ((A.questions || {}).list || []).map((q) => `<div class="t-card"><b>❓ ${esc(q.text)}</b><div class="tiny">第${q.ch || "?"}章｜${esc(STATUS[q.status])}｜${esc(q.created)}</div>${q.answer ? `<p>答：${esc(q.answer)}</p>` : ""}</div>`).join("") || "<p class='tiny'>尚無提問</p>";
+      const quizHtml = [1, 2, 3, 4].map((ch) => { const z = A["quiz_c" + ch]; if (!z || !z.first) return ""; return `<tr><th>第${ch}章</th><td>${z.first.score}/${z.first.total}</td><td>${z.latest.score}/${z.latest.total}</td><td>${(z.attempts || []).length}</td><td>${C.quiz[ch].map((it, i) => (z.first.correct[i] ? "✓" : "✗") + " " + esc((C.concepts.find((k) => k.id === it.concept) || {}).term)).join("、")}</td></tr>`; }).join("");
+      const dlg = (s["小波對話"] || []).map((m) => `<div class="msg ${m["角色"] === "學生" ? "me" : "guide"} ${m["轉教師"] ? "handoff" : ""}">${esc(m["角色"])}${m["轉教師"] ? "（轉教師）" : ""}｜${esc(qTitle[m["題號"]] || m["題號"])}<br>${esc(m["內容"])}<div class="tiny">${esc(m["時間"])}${m["提示主題"] ? "｜提示：" + esc(m["提示主題"]) + " L" + esc(m["提示層次"]) : ""}</div></div>`).join("");
+      const ops = (s["操作紀錄"] || []).slice(-120).reverse().map((e) => `<tr><td>${esc(e["時間"])}</td><td>${e["章"] || ""}</td><td>${esc(e["動作"])}</td><td>${esc(JSON.stringify(e["細節"]))}</td></tr>`).join("");
+      $("#det").innerHTML = `<div class="card"><h3>${esc(code)} 的學習紀錄</h3>
+        <div class="btn-row"><button class="btn small" id="dj">下載 JSON</button><button class="btn small" id="dc">下載 CSV</button></div>
+        <h3>評量：章末測驗</h3>${quizHtml ? `<div class="tbl-wrap"><table class="tbl"><tr><th>章</th><th>首次</th><th>最新</th><th>作答次數</th><th>首次各題（概念）</th></tr>${quizHtml}</table></div>` : "<p class='tiny'>尚未作答</p>"}
+        <h3>學習地圖</h3>${mapHtml}<h3>提問區</h3>${qHtml}
+        <h3>作答（初稿與修訂）</h3>${ans || "<p class='tiny'>尚無作答</p>"}
+        <h3>小波對話與提示歷程</h3><div class="qlog">${dlg || "<p class='tiny'>尚無對話</p>"}</div>
+        <h3>操作紀錄（最近 120 筆，共 ${(s["操作紀錄"] || []).length} 筆）</h3><div class="tbl-wrap"><table class="tbl"><tr><th>時間</th><th>章</th><th>動作</th><th>細節</th></tr>${ops}</table></div></div>`;
+      const one = { 教材版本: C.version, students: [s] };
+      $("#dj").onclick = () => download(`學習紀錄_${code}.json`, JSON.stringify(one, null, 2), "application/json");
+      $("#dc").onclick = () => download(`學習紀錄_${code}.csv`, LocalAPI.exportCSV(one), "text/csv;charset=utf-8");
+      $("#det").scrollIntoView({ behavior: "smooth" });
+    }
+    function block(b) {
+      if (b.kind === "h") return `<h3>${esc(b.text)}</h3>`;
+      if (b.kind === "p") return `<p>${esc(b.text)}</p>`;
+      if (b.kind === "kv") return `<dl class="kv">${b.rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl>`;
+      if (b.kind === "table") return `${b.caption ? `<p><b>${esc(b.caption)}</b></p>` : ""}<div class="tbl-wrap"><table class="tbl"><tr>${b.head.map((x) => `<th>${esc(x)}</th>`).join("")}${b.check ? "<th>實測結果</th>" : ""}</tr>
+        ${b.rows.map((r) => `<tr>${r.map((c, i) => i ? `<td>${esc(c)}</td>` : `<th>${esc(c)}</th>`).join("")}${b.check ? `<td><label class="inline"><input type="checkbox" style="width:auto"> 通過</label></td>` : ""}</tr>`).join("")}</table></div>`;
+      if (b.kind === "list") return `<p><b>${esc(b.caption || "")}</b></p><div class="checklist">${b.items.map((x) => `<label>${b.check ? '<input type="checkbox">' : "•"} ${esc(x)}</label>`).join("")}</div>`;
+      if (b.kind === "links") return `<ul>${b.items.map((l) => `<li><a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a></li>`).join("")}</ul>`;
+      if (b.kind === "cards") return b.items.map((c) => `<div class="t-card"><h4>${esc(c.head)}</h4><dl class="kv">${c.rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl></div>`).join("");
+      if (b.kind === "img") return `<figure class="figure"><img src="${esc(b.src)}" alt="${esc(b.caption)}" class="doc-img"><figcaption>${esc(b.caption)}</figcaption></figure>`;
+      if (b.kind === "imgs") return `<div class="doc-grid">${b.items.map((x) => `<figure class="figure"><img src="${esc(x.src)}" alt="${esc(x.caption)}" class="doc-img"><figcaption>${esc(x.caption)}</figcaption></figure>`).join("")}</div>`;
+      return "";
+    }
+    function section(s) {
+      $("#tb").innerHTML = `<div class="card t-sec"><h2>${esc(s.title)}</h2><p class="tiny">來源文件：${esc(s.src)}</p>${s.blocks.map(block).join("")}</div>`;
+    }
+    boot();
+  })();
+  </script>
+</body>
+</html>

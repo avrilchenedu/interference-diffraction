@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>干涉與繞射｜互動教材</title>
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <meta name="description" content="高中物理「干涉與繞射」互動式線上教材：預測、觀察、以證據解釋，搭配蘇格拉底式追問的引導角色小波。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#/home/summary">干涉與繞射</a>
+    <nav class="chap-nav" aria-label="章節"></nav>
+    <div class="gprog" hidden><div class="bar thin"><span></span></div><span class="tiny pct"></span></div>
+    <div class="top-right">
+      <span class="who"></span>
+      <a class="btn small ghost rec-link" href="#/done">我的紀錄</a>
+    </div>
+  </header>
+  <div class="net-banner" hidden>目前離線：作答先存在這台裝置，連線後會自動同步。</div>
+  <main id="app" tabindex="-1"></main>
+  <footer class="site-foot">教材內容整理自「干涉與繞射」單元十份設計文件（設計者：江長屹／台師大科教所）。照片取自 Wikimedia Commons，作者與授權見 <a href="#/credits">資料來源與授權</a>　｜　<a href="teacher.html">教師後台</a></footer>
+
+  <!-- 互動小人物：小波 -->
+  <div class="mascot" aria-live="polite">
+    <div class="bubble" hidden><button class="bubble-x" aria-label="收起">×</button><div class="bubble-text"></div><button class="btn small ask-open">問小波</button></div>
+    <button class="mascot-btn" aria-label="小波：點我提問"></button>
+  </div>
+  <aside class="chat" hidden aria-label="問小波">
+    <div class="chat-head"><b>問小波</b><span class="tiny">小波只追問、不代答</span><button class="chat-x" aria-label="關閉">×</button></div>
+    <div class="chat-log"></div>
+    <form class="chat-form"><input class="chat-in" placeholder="把你的疑問或想法打在這裡……" autocomplete="off"><button class="btn primary">送出</button></form>
+  </aside>
+  <div class="modal" hidden role="dialog" aria-modal="true"><div class="modal-card"><div class="modal-head"><b class="modal-title"></b><button class="modal-x" aria-label="關閉">×</button></div><div class="modal-body"></div></div></div>
+  <div class="lightbox" hidden><button class="lb-x" aria-label="關閉">×</button><div class="lb-body"></div></div>
+
+  <script src="localapi.js"></script>
+  <script src="sims.js"></script>
+  <script src="app.js"></script>
+  <script src="home.js"></script>
+  <script src="assess.js"></script>
+</body>
+</html>

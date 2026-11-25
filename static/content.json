@@ -1,0 +1,2450 @@
+{
+ "version": "範例v1.0／115.09.04",
+ "unit": {
+  "title": "干涉與繞射",
+  "subject": "自然科學／物理",
+  "audience": "高中一年級必修物理；已學過波的波長、頻率、週期與振幅等物理概念，採定性理解。",
+  "conclusion": "光的干涉與繞射形成有規律的明暗分布，可用波的疊加與惠更斯原理解釋，因此支持光具有波動性。",
+  "prerequisite": "知道波會傳播；能區分位移與振幅，理解波長、頻率及週期的意義。",
+  "scope": "處理波的疊加、水波干涉、雙狹縫、單狹縫與薄膜干涉；以定性解釋為主，暫不推導條紋位置及膜厚公式。",
+  "coreQuestion": "直進模型能解釋狹縫後的亮暗分布嗎？波的疊加如何解釋？",
+  "coreUnderstanding": "波在同處疊加可增強或減弱。光的干涉與繞射支持波動描述。",
+  "designIdea": "先預測，再觀察，以證據修正解釋；由水波類比遷移至光。",
+  "path": [
+   "繩波疊加",
+   "水波干涉",
+   "雙狹縫",
+   "單狹縫與薄膜",
+   "波動性論證"
+  ],
+  "limits": "定性說明；不推公式或掃描參數。水波是類比，光學觀察才是光的證據。",
+  "nodes": [
+   {
+    "no": "01",
+    "name": "波的疊加與水波干涉",
+    "core": "波的疊加可造成振幅增強或減弱；位移為零不等於振幅為零。",
+    "link": "先備：位移、振幅、週期。"
+   },
+   {
+    "no": "02",
+    "name": "雙狹縫干涉",
+    "core": "兩列相干光波疊加，在屏幕形成穩定的明暗分布。",
+    "link": "承接01：將振幅增減連到光的明暗。"
+   },
+   {
+    "no": "03",
+    "name": "單狹縫繞射",
+    "core": "狹縫內不同位置的次波疊加，形成中央寬亮紋與旁側弱亮紋。",
+    "link": "承接02：由兩個次波源推進到縫內許多次波源。"
+   },
+   {
+    "no": "04",
+    "name": "薄膜干涉與單元統整",
+    "core": "薄膜反射光的干涉可形成色彩；干涉與繞射共同支持光的波動性。",
+    "link": "承接02、03：應用疊加概念並收束全章。"
+   }
+  ],
+  "aiRule": "小波只追問、不代答：預測時不揭答案、觀察時不解釋，到解釋階段才幫你查核證據。"
+ },
+ "chapters": [
+  {
+   "id": 1,
+   "short": "波的疊加",
+   "title": "波的疊加與水波干涉",
+   "period": "對應第1節（建立規則）",
+   "core": "在理想線性介質中，合位移等於各波位移之和；固定位置的振幅取決於兩列波的振動關係。",
+   "question": "波如何疊加？",
+   "goal": "以疊加解釋繩波與水波（學習目標1、4）",
+   "steps": [
+    {
+     "type": "intro",
+     "title": "這一章要回答：波如何疊加？",
+     "mascot": "嗨，我是小波！這章我們先用繩波建立「疊加」的規則，再拿去解釋水波干涉。我不會直接給答案，但會一直問你問題，陪你自己找到答案。",
+     "paras": [
+      "先備：知道波會傳播；能區分位移與振幅，理解波長、頻率及週期的意義。",
+      "本章產出：你的預測、模擬觀察、選點紀錄，以及兩段「主張—證據—推理」（CER）。"
+     ]
+    },
+    {
+     "type": "predict",
+     "qid": "c1_q1",
+     "title": "Q1 先預測：兩個脈衝相遇後會怎樣？",
+     "mascot": "先別急著看模擬！把你的直覺留下來，等一下我們再拿觀察來比對。猜錯沒關係，預測不評分。",
+     "prompt": "一條繩子上，兩個相同的向上脈衝 A、B 正相向傳播。相遇之後，你預測會發生什麼？",
+     "options": [
+      "兩個脈衝會反彈回去",
+      "兩個脈衝會黏在一起",
+      "兩個脈衝會消失",
+      "兩個脈衝會互相通過，各自繼續前進",
+      "其他"
+     ],
+     "reason": "我這樣預測，因為："
+    },
+    {
+     "type": "sim",
+     "sim": "rope",
+     "qid": "c1_sim_rope",
+     "title": "繩波疊加模擬：看看相遇與通過",
+     "mascot": "依序試試：①按「同向」再「播放」，在 t＝5 秒完全重疊時看 P 點；②改按「反向」再播一次；③一路看到兩個脈衝都通過。上面一格是分波模型，下面一格才是真正的繩形喔。",
+     "note": "理想線性介質中的模型示意；分波為輔助表示，不是三條實體繩子。負值表示脈衝向下，不稱為「負振幅」。"
+    },
+    {
+     "type": "choice",
+     "qid": "c1_q2a",
+     "title": "Q2 記錄你看到的（一）",
+     "mascot": "回到模擬核對一下再作答。",
+     "prompt": "「同向」案例：兩脈衝完全重疊的那一刻，P 點的合成位移是多少？",
+     "options": [
+      {
+       "t": "＋2",
+       "ok": true,
+       "fb": "對，你看到的是 ＋1＋1＝＋2。想一想：這是把哪兩個量相加？是在同一位置、同一時刻嗎？"
+      },
+      {
+       "t": "＋1",
+       "ok": false,
+       "fb": "再看一次 P 點回饋：A 和 B 在那一刻各是多少？兩者合起來呢？"
+      },
+      {
+       "t": "0",
+       "ok": false,
+       "fb": "你確定是「同向」案例嗎？看看此刻 A、B 是同在平衡位置上方，還是一上一下？"
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "qid": "c1_q2b",
+     "title": "Q2 記錄你看到的（二）",
+     "prompt": "「反向」案例（＋1、－1）：完全重疊的那一刻，合成繩形是什麼樣子？",
+     "options": [
+      {
+       "t": "一條平線，P 點合成位移為 0",
+       "ok": true,
+       "fb": "對：＋1－1＝0。可是，這一刻繩是平的，代表兩個脈衝就此不見了嗎？再按播放看下去。"
+      },
+      {
+       "t": "一個 ＋2 的高脈衝",
+       "ok": false,
+       "fb": "看 P 點回饋：B 的脈衝高度是正還是負？一正一負相加會變大嗎？"
+      },
+      {
+       "t": "兩個脈衝彈開",
+       "ok": false,
+       "fb": "請在 t＝5 秒按暫停，只看「下區：合成繩形」，此刻繩子長什麼樣子？"
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "qid": "c1_q2c",
+     "title": "Q2 記錄你看到的（三）",
+     "prompt": "兩個案例都播到最後：脈衝 A 通過重疊區之後，它往哪裡走、形狀如何？",
+     "options": [
+      {
+       "t": "繼續向右走，形狀和原來一樣",
+       "ok": true,
+       "fb": "你追蹤到了同一個脈衝。所以「零位移」只描述哪一個瞬間？"
+      },
+      {
+       "t": "反彈向左走",
+       "ok": false,
+       "fb": "追蹤同一脈衝的相遇前、重疊與通過後：它的傳播方向有改變嗎？請盯著標籤 A 再播一次。"
+      },
+      {
+       "t": "停在中間不見了",
+       "ok": false,
+       "fb": "在反向案例中，重疊當下繩是平的——但請繼續播放到 t＝10 秒，平線之後發生什麼事？"
+      }
+     ]
+    },
+    {
+     "type": "read",
+     "title": "教材正文：疊加原理",
+     "mascot": "讀完後，對照你剛才的觀察：哪一句說的就是你在 P 點看到的事？",
+     "paras": [
+      "兩列繩波脈衝相遇時，會暫時在同一段繩上重疊。在理想線性介質中，該處的合位移等於兩列波各自造成的位移相加。相遇結束後，兩列脈衝仍各自沿原方向傳播。",
+      "對同一位置的兩列同頻率週期波而言，若振動步調相同，合振幅最大，稱為完全建設性干涉；若振幅相等且振動步調恰好相反，合振幅為零，稱為完全破壞性干涉。"
+     ],
+     "figure": "rope_compare",
+     "figCaption": "兩種完全重疊的比較（理想線性介質中的模型示意；分波為輔助表示。相消後，兩脈衝仍各自傳播。）"
+    },
+    {
+     "type": "write",
+     "qid": "c1_q3",
+     "title": "Q3 用疊加解釋，並回頭檢查 Q1",
+     "mascot": "先寫你的初稿，寫好後可以按「請小波追問」，我會問你一個問題幫你檢查；也可以略過。最後由你自己決定要不要修訂。",
+     "showPrev": "c1_q1",
+     "prompt": "用「疊加」解釋：兩脈衝重疊時繩形怎麼決定？通過後又如何？再說明你要保留或修訂 Q1 的預測。",
+     "fields": [
+      {
+       "key": "explain",
+       "label": "我的解釋",
+       "rows": 3,
+       "ph": "重疊時……；通過後……"
+      },
+      {
+       "key": "q1",
+       "label": "對 Q1 預測：我保留／修正＿＿，依據是＿＿",
+       "rows": 2,
+       "ph": "依據 Q2 的哪個觀察？"
+      }
+     ]
+    },
+    {
+     "type": "read",
+     "title": "位移 ≠ 振幅",
+     "mascot": "很多人在這裡卡住：某一刻位移是零，振幅也是零嗎？等一下用水波模擬來驗證。",
+     "paras": [
+      "位移是某一時刻偏離平衡位置的程度；振幅則是週期振動中偏離平衡位置的最大程度。某一刻位移為零，不能據此認定振幅為零。"
+     ]
+    },
+    {
+     "type": "predict",
+     "qid": "c1_q4",
+     "title": "Q4 先預測：A、B 兩點哪裡起伏大？",
+     "mascot": "兩個同相的點波源在水面上振動。先猜，再看一個週期的紀錄。",
+     "prompt": "水面上有兩個位置固定、同時同步振動的點波源。下一頁模擬中的 A 點在兩波源正中間的前方，B 點在旁邊。你預測一段時間內哪一點起伏較大？",
+     "options": [
+      "A 點起伏較大",
+      "B 點起伏較大",
+      "差不多",
+      "無法判斷"
+     ],
+     "reason": "我這樣預測，因為："
+    },
+    {
+     "type": "sim",
+     "sim": "water",
+     "qid": "c1_sim_water",
+     "title": "Q5 水波干涉模擬：選點看一整個週期",
+     "mascot": "這是模型畫面，不是真實水槽。點 A、點 B，或在水面上任點一處，看看右邊的起伏紀錄。記得：不要只用某一刻的顏色判斷，要看一段時間。",
+     "note": "模型畫面，非真實水槽證據。顏色表示此刻的瞬時位移；切到「振幅分布」才是一段時間內的最大起伏。"
+    },
+    {
+     "type": "choice",
+     "qid": "c1_q5",
+     "title": "Q5 選點判讀",
+     "prompt": "依起伏紀錄：哪一點的振幅（一個週期內的最大位移）幾乎為零？",
+     "options": [
+      {
+       "t": "B 點",
+       "ok": true,
+       "fb": "你是依「一段時間的最大位移」判斷的嗎？那麼 B 點某些時刻位移不為零，振幅卻接近零，這代表什麼？"
+      },
+      {
+       "t": "A 點",
+       "ok": false,
+       "fb": "固定在 A 點，看完整一個週期：它的最大位移是多少？和 B 點比呢？"
+      },
+      {
+       "t": "某一刻顏色最淺的點",
+       "ok": false,
+       "fb": "單張畫面只看到瞬時位移。固定同一位置，觀察完整週期，比較瞬時位移與最大位移，結果一樣嗎？"
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "qid": "c1_q6",
+     "title": "Q6 比較：亮處一定是腹線嗎？",
+     "prompt": "在模擬的「瞬時起伏」畫面中，某一刻顏色最亮（波峰最高）的地方，一定就是腹線嗎？",
+     "options": [
+      {
+       "t": "不一定，要看一段時間的振幅",
+       "ok": true,
+       "fb": "很好。那在 A 點，某一刻位移剛好為零時，它的振幅是零嗎？"
+      },
+      {
+       "t": "一定是，亮就是腹線",
+       "ok": false,
+       "fb": "在畫面上找一個此刻很亮的點，按住觀察一個週期：它的最大位移一直很大嗎？亮色和腹線是同一件事嗎？"
+      }
+     ]
+    },
+    {
+     "type": "read",
+     "title": "教材正文：水波干涉與腹線、節線",
+     "mascot": "振幅極大或極小的位置連成的線，有自己的名字。注意它們不是往外跑的波前喔！",
+     "paras": [
+      "兩個位置固定、振動關係固定的水波源，可形成位置穩定的干涉分布。完全相消還要求兩列波到達該處時振幅相等。局部振幅為零，不代表兩列波永久消失。",
+      "兩波源同頻率且相位關係固定，使固定位置的到達相位差保持穩定。同相到達時振幅增大；反相到達時振幅減小，觀察處等振幅時才完全相消。",
+      "振幅極大的位置連成「腹線」，振幅極小的位置連成「節線」；這些線不是向外移動的波前。判讀須看一段時間的起伏。"
+     ]
+    },
+    {
+     "type": "choice",
+     "qid": "c1_core2",
+     "title": "核心問題：為什麼位置穩定？",
+     "prompt": "兩個同相點波源為什麼會形成位置穩定的腹線與節線，而不是隨機斑塊或另一組向外傳播的波？",
+     "options": [
+      {
+       "t": "兩波源同頻率、相位關係固定，所以每個固定位置的到達相位差保持穩定",
+       "ok": true,
+       "fb": "你連起了因果。再追一步：真實水槽中的節線，一定完全靜止嗎？（提示：完全相消還需要什麼條件？）"
+      },
+      {
+       "t": "因為波峰和波峰相交的地方就是腹線",
+       "ok": false,
+       "fb": "只看波峰交點是某一刻的畫面。換個時刻，交點位置會怎樣？什麼東西在一段時間中保持不變？"
+      },
+      {
+       "t": "因為腹線、節線本身是向外傳播的另一組波",
+       "ok": false,
+       "fb": "請在模擬切到「振幅分布」：這些線會往外移動嗎？"
+      }
+     ]
+    },
+    {
+     "type": "write",
+     "qid": "c1_q7",
+     "title": "Q7 寫一段水波干涉的 CER",
+     "mascot": "主張要清楚、證據要能回查（說明來自模型還是實驗）、推理要連到疊加原理。",
+     "prompt": "用「主張—證據—推理」解釋：為什麼兩個同相點波源的水面會出現位置穩定的腹線與節線？",
+     "fields": [
+      {
+       "key": "claim",
+       "label": "主張（Claim）",
+       "rows": 2,
+       "ph": "我認為……"
+      },
+      {
+       "key": "evidence",
+       "label": "證據（Evidence）：引用你的選點或起伏紀錄，並註明是模型或實驗",
+       "rows": 2,
+       "ph": "在模擬中，A 點……B 點……"
+      },
+      {
+       "key": "reasoning",
+       "label": "推理（Reasoning）：連到位移疊加與固定的到達關係",
+       "rows": 3,
+       "ph": "因為……所以……"
+      }
+     ]
+    },
+    {
+     "type": "write",
+     "qid": "c1_q8",
+     "title": "Q8 我的想法改變了嗎？",
+     "mascot": "回頭看看你的 Q1、Q4 預測。",
+     "noAI": true,
+     "prompt": "哪一項觀察讓你改變（或更確定）原本的想法？請指出修訂的理由。",
+     "fields": [
+      {
+       "key": "change",
+       "label": "原本我認為＿＿；看到＿＿後，我現在認為＿＿",
+       "rows": 3,
+       "ph": ""
+      }
+     ]
+    },
+    {
+     "type": "recap",
+     "title": "本章重點回顧",
+     "mascot": "先試著用自己的話說出本章重點，再打開下面的整理核對。",
+     "selfCheck": "用一句話說出本章的核心理解：",
+     "core": "在理想線性介質中，合位移等於各波位移之和；固定位置的振幅取決於兩列波的振動關係。",
+     "conditions": "疊加採理想線性近似。穩定干涉須有固定的波源相位關係；完全相消須在觀察處等振幅、反相。應寫「位移相消」，避免把它說成總能量消失。",
+     "misconceptions": [
+      "把波相遇視為物體碰撞而反彈、黏住或消失。",
+      "把瞬時合成位移為零說成兩列波或總能量永久消失。",
+      "只寫「相加」卻未指明同一位置與同一時刻。",
+      "只把波峰交點當成建設性干涉；以亮色等同腹線、暗色等同節線。",
+      "認為節線必定在真實水槽中完全靜止；把腹線或節線畫成向外傳播的圓形波。"
+     ],
+     "ref": {
+      "label": "OpenStax University Physics Vol. 1 §16.5（2026-09-04查核）",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/16-5-interference-of-waves",
+      "focus": "查核重點：線性疊加、波通過彼此、完全相消的條件。"
+     }
+    },
+    {
+     "type": "review",
+     "qid": "quiz_c1",
+     "title": "知識點統整：測驗、複習單與單字卡",
+     "mascot": "這一章結束了！先做個小測驗，我會幫你找出還不熟悉的概念，再生成你專屬的複習學習單和單字卡。"
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "short": "雙狹縫干涉",
+   "title": "雙狹縫干涉",
+   "period": "對應第2節（遷移至光）",
+   "core": "兩列相干光波到達屏幕各處時的相位差不同，形成穩定的明暗條紋。",
+   "question": "亮暗紋如何形成？",
+   "goal": "解釋雙狹縫亮暗紋（學習目標2、4）",
+   "steps": [
+    {
+     "type": "intro",
+     "title": "這一章要回答：亮暗紋如何形成？",
+     "mascot": "上一章我們在水面上看到振幅的增強和減弱。現在換成光——但要小心，水波只是類比，光學觀察才是光的證據。",
+     "paras": [
+      "承接第1章：將振幅增減連到光的明暗。",
+      "核心問題：如果光只沿直線前進，雙狹縫後的屏幕應出現什麼？實際觀察到的分布，會不會迫使我們修正原來的模型？"
+     ]
+    },
+    {
+     "type": "revisit",
+     "qid": "c2_revise_c1q7",
+     "title": "暖身：修訂你的水波 CER",
+     "mascot": "看看你上一章的 Q7。哪一項觀察支持腹線、節線？你的證據可以回查嗎？",
+     "source": "c1_q7",
+     "prompt": "檢查證據與推理，必要時修訂你的水波 CER（可補上證據來源或推理）。"
+    },
+    {
+     "type": "photos",
+     "title": "實驗裝置：先認識器材位置",
+     "mascot": "這裡只呈現器材的位置，我刻意沒有畫光線——光會怎麼走，等你自己預測。",
+     "figure": "setup_double",
+     "figCaption": "雙狹縫實驗架設：空間位置示意（本教材自製；只呈現器材位置，不畫光線路徑）",
+     "photos": [
+      "bench_kit",
+      "bench_setup"
+     ],
+     "safety": "雷射由教師操作：不直視、不指向他人或鏡面；調整前關閉光源。"
+    },
+    {
+     "type": "predict",
+     "qid": "c2_q1",
+     "title": "Q1 先預測：屏幕上會看到什麼？",
+     "mascot": "一束穩定的紅色雷射光通過兩條相近的狹縫。先完成預測，我才會打開實拍照片。",
+     "prompt": "一束穩定紅色雷射光通過相近的雙狹縫，遠方屏幕會出現什麼分布？本節先作定性預測。Q1　你預測屏幕上會看到什麼？先勾選，再畫出中央與左右兩側的明暗分布，並寫出一項理由。深色代表暗，留白代表亮。（點一下格子在亮／暗之間切換）",
+     "options": [
+      "主要只有兩條亮紋",
+      "整片亮度差不多",
+      "多條明暗相間的條紋",
+      "其他"
+     ],
+     "draw": true,
+     "reason": "我這樣預測，因為："
+    },
+    {
+     "type": "observe",
+     "qid": "c2_q2",
+     "title": "Q2 觀察：記錄屏幕實際的亮暗分布",
+     "mascot": "現在先只記錄看到什麼，還不急著解釋。記得標示資料來源！",
+     "photo": "double_red",
+     "model": "double_pattern",
+     "sourceOptions": [
+      "現場示範",
+      "有來源的實拍照片／影片",
+      "僅理想模型"
+     ],
+     "prompt": "先記錄屏幕實際亮暗分布，再與Q1的預測比較。Q2　勾選資料來源，畫出中央與左右兩側的明暗分布，並寫出兩個觀察特徵。",
+     "draw": true,
+     "fields": [
+      {
+       "key": "f1",
+       "label": "特徵一",
+       "rows": 1,
+       "ph": ""
+      },
+      {
+       "key": "f2",
+       "label": "特徵二",
+       "rows": 1,
+       "ph": ""
+      }
+     ]
+    },
+    {
+     "type": "compare",
+     "qid": "c2_q3",
+     "title": "Q3 與預測比較",
+     "mascot": "不要求每個人都一定改變想法，但要說清楚「哪個觀察」讓你保留或修改「哪一部分」。",
+     "a": "c2_q1",
+     "b": "c2_q2",
+     "options": [
+      "大致相同",
+      "部分相同",
+      "不同"
+     ],
+     "fields": [
+      {
+       "key": "keep",
+       "label": "我保留／修正＿＿＿；依據是＿＿＿（引用一項觀察）",
+       "rows": 2,
+       "ph": ""
+      }
+     ],
+     "prompt": "Q3　與Q1比較後，你保留或修正哪一點？請引用一項觀察。"
+    },
+    {
+     "type": "choice",
+     "qid": "c2_core3",
+     "title": "直進模型失效了嗎？",
+     "prompt": "在近似平行入射、單純幾何直進的模型下，屏幕應該出現什麼？它能說明實際的分布嗎？",
+     "options": [
+      {
+       "t": "應該只出現兩條狹縫的投影；無法說明實際多條明暗交替的分布",
+       "ok": true,
+       "fb": "你指出了矛盾。那我們需要一個能描述光做哪些事情的模型？（展開？重疊？）"
+      },
+      {
+       "t": "直進模型就能解釋多條亮紋",
+       "ok": false,
+       "fb": "如果光只沿直線前進，穿過兩條縫後會在屏幕哪裡留下亮處？那會有幾條？"
+      },
+      {
+       "t": "因為光是波，所以不用比較",
+       "ok": false,
+       "fb": "「因為光是波」是結論。你能指出哪一項可回查的觀察，讓直進模型失效嗎？"
+      }
+     ]
+    },
+    {
+     "type": "read",
+     "title": "教材正文：惠更斯原理與相干波源",
+     "mascot": "現在進入解釋階段。讀完後想一想：為什麼兩條狹縫可以看成兩個「波源」？",
+     "figure": "huygens",
+     "figCaption": "惠更斯原理示意（本教材自製模型；模型波面不是可見光路）",
+     "paras": [
+      "單色光照射兩條相近的窄縫後，屏幕可出現交替排列的明暗條紋。這些條紋是光在不同位置的強度分布，不能當成兩條狹縫的放大影像。",
+      "依惠更斯原理，波面上各點可視為發出次波的波源，次波包絡形成新波面；在窄縫近似下，兩條狹縫可視為兩個次波源。同一穩定單色光適當照明兩縫時，兩者頻率相同，並保持固定的相位關係，稱為相干波源。相位描述週期振動進行到哪個階段。"
+     ]
+    },
+    {
+     "type": "q4board",
+     "qid": "c2_q4",
+     "title": "Q4 解釋亮暗：B 亮紋與 D 暗紋",
+     "mascot": "觀察教材 → 填寫初稿 → 小波追問 → 自行修訂。切換正文、實拍與模型時，已填的答案都會保留。",
+     "context": "B 代表亮紋位置，D 代表暗紋位置。以同偏振、相干且在觀察處等振幅的兩列光波作理想化討論。",
+     "paras": [
+      "兩列光波到達某處時，若相位相同便互相增強；若相位相反便互相減弱。兩列光波在該處振幅相等且反相時，可完全相消。眼睛無法追蹤光的快速振動，看到的是時間平均的光強度，因此形成亮紋與暗紋。",
+      "暗紋不表示兩列光波都未到達。光波疊加可以解釋這種規律分布，提供光具有波動性的證據。"
+     ],
+     "rows": [
+      {
+       "pt": "B",
+       "label": "B 亮紋"
+      },
+      {
+       "pt": "D",
+       "label": "D 暗紋"
+      }
+     ],
+     "cols": [
+      {
+       "key": "phase",
+       "label": "相位",
+       "opts": [
+        "同相",
+        "反相"
+       ]
+      },
+      {
+       "key": "inter",
+       "label": "干涉",
+       "opts": [
+        "建設性",
+        "破壞性"
+       ]
+      },
+      {
+       "key": "light",
+       "label": "光強",
+       "opts": [
+        "較強",
+        "理想下為零"
+       ]
+      }
+     ],
+     "sentence": "請用2–3句說明：兩列光波都能到達屏幕，為何仍有亮紋與暗紋？",
+     "q4text": "Q4　依兩個相干次波源的模型，完成B與D兩處的判斷。"
+    },
+    {
+     "type": "write",
+     "qid": "c2_q5",
+     "title": "Q5 比較水波與光",
+     "mascot": "兩種活動各自「直接看到」的是什麼？這是最容易混淆的地方。",
+     "prompt": "連結前一節水波干涉經驗，整理光的雙狹縫干涉，說清楚兩種現象的共同規則與差異。Q5　比較水波干涉與光的雙狹縫干涉，各寫一項可觀察的量，再寫一項共同規則。",
+     "fields": [
+      {
+       "key": "water",
+       "label": "水波可觀察：",
+       "rows": 1,
+       "ph": ""
+      },
+      {
+       "key": "light",
+       "label": "光的雙狹縫可觀察：",
+       "rows": 1,
+       "ph": ""
+      },
+      {
+       "key": "rule",
+       "label": "共同規則：",
+       "rows": 2,
+       "ph": ""
+      }
+     ]
+    },
+    {
+     "type": "write",
+     "qid": "c2_q6",
+     "title": "Q6 光的 CER：完整解釋雙狹縫亮暗紋",
+     "mascot": "請用「因為……所以……」把相位、疊加與亮暗連起來，並區分哪些是真實證據、哪些是模型。",
+     "prompt": "Q6　請用4–5句解釋雙狹縫亮暗紋。依序說明：兩個次波源 → 光波疊加 → 亮紋 → 暗紋 → 與Q2觀察的連結。",
+     "fields": [
+      {
+       "key": "text",
+       "label": "我的解釋",
+       "rows": 6,
+       "ph": "兩窄縫……；兩列光波……；同相處……；反相處……；這可以解釋 Q2 的……"
+      }
+     ]
+    },
+    {
+     "type": "recap",
+     "title": "本章重點回顧",
+     "selfCheck": "用一句話說出本章的核心理解：",
+     "core": "兩列相干光波到達屏幕各處時的相位差不同，形成穩定的明暗條紋。",
+     "conditions": "此處採同偏振方向、相干單色光的理想模型。完全暗紋還需等振幅；實驗暗紋可能仍有背景光。兩縫都會產生繞射，不能說雙狹縫只有干涉。屏幕顯示時間平均光強；模型波面不是可見光路。",
+     "misconceptions": [
+      "把暗紋說成沒有光到達。",
+      "把水波模擬當成光的實驗證據；把波前圓弧當作可見光路。",
+      "混淆瞬時振動與屏幕時間平均光強度。",
+      "把兩條狹縫本身畫成屏幕圖樣；以理想模擬取代真實觀察。",
+      "只寫「因為光是波」而未指出直進模型失效的具體證據。"
+     ],
+     "ref": {
+      "label": "OpenStax University Physics Vol. 3 §3.1（2026-09-04查核）",
+      "url": "https://openstax.org/books/university-physics-volume-3/pages/3-1-youngs-double-slit-interference",
+      "focus": "查核重點：相干條件、次波源近似與明暗紋的形成。"
+     }
+    },
+    {
+     "type": "review",
+     "qid": "quiz_c2",
+     "title": "知識點統整：測驗、複習單與單字卡",
+     "mascot": "這一章結束了！先做個小測驗，我會幫你找出還不熟悉的概念，再生成你專屬的複習學習單和單字卡。"
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "short": "單狹縫繞射",
+   "title": "單狹縫繞射",
+   "period": "對應第3節前段（應用統整）",
+   "core": "光通過窄縫後，縫內不同位置的次波在各方向增強或減弱，形成繞射的明暗分布。",
+   "question": "中央與兩側亮紋有何差別？",
+   "goal": "比較干涉、繞射（學習目標3）",
+   "steps": [
+    {
+     "type": "intro",
+     "title": "這一章要回答：只有一條縫，也會有明暗嗎？",
+     "mascot": "上一章是「兩個」次波源。如果只剩一條縫，縫裡面有「許多」次波源，會發生什麼事？",
+     "paras": [
+      "承接第2章：由兩個次波源推進到縫內許多次波源。",
+      "先修訂你上一章的光 CER：哪一句把模型當成了實驗證據？"
+     ]
+    },
+    {
+     "type": "revisit",
+     "qid": "c3_revise_c2q6",
+     "title": "暖身：修訂你的光 CER",
+     "mascot": "區分三種東西：光學實拍、水波類比、模型。你的 Q6 用的是哪一種當證據？",
+     "source": "c2_q6",
+     "prompt": "修訂第2章 Q6，補上證據或推理（或說明為何保留）。"
+    },
+    {
+     "type": "photos",
+     "title": "實驗裝置：單狹縫",
+     "mascot": "同樣，先看器材位置，不畫幾何光線。",
+     "figure": "setup_single",
+     "figCaption": "單狹縫實驗架設：空間位置示意（本教材自製；不畫幾何光線，可作器材順序提示）",
+     "photos": [
+      "slit_adjustable",
+      "bench_setup3"
+     ]
+    },
+    {
+     "type": "predict",
+     "qid": "c3_q0",
+     "title": "先預測：單狹縫後的屏幕",
+     "mascot": "先猜，再看實拍。",
+     "prompt": "單色光通過一條窄單狹縫，遠方屏幕上會看到什麼？",
+     "options": [
+      "只有一條和狹縫一樣寬的亮紋",
+      "中央一條較寬的亮紋，兩側有較窄、較弱的亮紋",
+      "多條等寬、等亮的條紋",
+      "其他"
+     ],
+     "draw": true,
+     "reason": "我這樣預測，因為："
+    },
+    {
+     "type": "observe",
+     "qid": "c3_q1",
+     "title": "Q1 觀察：比較單狹縫與雙狹縫的實拍",
+     "mascot": "先比實拍，再比次波源分布。中央與兩側亮紋有什麼差別？",
+     "photo": "single_blue",
+     "photo2": "double_red",
+     "model": "single_pattern",
+     "sourceOptions": [
+      "現場示範",
+      "有來源的實拍照片／影片",
+      "僅理想模型"
+     ],
+     "prompt": "描述單狹縫中央亮紋相對其旁側亮紋的寬度與強弱，以及雙狹縫中央附近的明暗排列。",
+     "fields": [
+      {
+       "key": "single",
+       "label": "單狹縫：中央亮紋 vs 旁側亮紋",
+       "rows": 2,
+       "ph": ""
+      },
+      {
+       "key": "double",
+       "label": "雙狹縫：中央附近的明暗排列",
+       "rows": 2,
+       "ph": ""
+      }
+     ]
+    },
+    {
+     "type": "read",
+     "title": "教材正文：單狹縫繞射",
+     "mascot": "注意「遠場」這個條件：屏幕要夠遠。",
+     "paras": [
+      "單色光通過窄單狹縫後，會向側方展開。在遠場條件下，屏幕中央出現較寬、較亮的中央亮紋，兩側則有較窄、逐漸變弱的旁側亮紋，亮紋之間由暗紋隔開。此處的遠場指屏幕足夠遠，使縫內各處到同一觀察點的傳播方向可近似平行。",
+      "以均勻、同相照明的狹縫為例，縫內不同位置可視為許多次波源。正前方的次波大致同相到達，彼此增強；偏離正前方後，各次波的路徑長度不同，某些方向完全相消，另一些方向仍有部分增強。"
+     ]
+    },
+    {
+     "type": "sim",
+     "sim": "slits",
+     "qid": "c3_sim_slits",
+     "title": "次波源分布：兩個 vs 許多個",
+     "mascot": "切換「雙狹縫」與「單狹縫」，看看次波源怎麼分布；再切換縫寬「較寬／較窄」，看中央亮紋怎麼變。這是理想模型，不能取代實拍喔。",
+     "note": "理想模型（遠場、均勻單色照明）；不得取代實拍證據。不同裝置之間，不直接比較中央寬度大小。"
+    },
+    {
+     "type": "choice",
+     "qid": "c3_width",
+     "title": "縫變窄會怎樣？",
+     "prompt": "在相同波長與遠場觀察條件下，於本教材的狹縫尺度內縮小縫寬，中央亮紋會？",
+     "options": [
+      {
+       "t": "變寬，繞射展開角度增加",
+       "ok": true,
+       "fb": "對。但這是狹縫影像的單純放大嗎？這個結論能不能外推到所有縫寬與近場情況？"
+      },
+      {
+       "t": "變窄，因為縫變窄了",
+       "ok": false,
+       "fb": "如果屏幕上的亮紋只是狹縫的影子，答案會是這樣。回到模擬切換「較窄」——你看到的是什麼？"
+      },
+      {
+       "t": "不變",
+       "ok": false,
+       "fb": "請在模擬中只改變縫寬、其他不動，比較兩次中央亮紋的寬度。"
+      }
+     ]
+    },
+    {
+     "type": "read",
+     "title": "教材正文：兩種現象，同一個原理",
+     "paras": [
+      "在相同波長與遠場觀察條件下，於本教材的狹縫尺度內縮小縫寬，會使繞射展開角度增加，中央亮紋變寬。這不是狹縫影像的單純放大。",
+      "雙狹縫以兩縫之間的光波疊加說明條紋；單狹縫則考慮同一縫內不同位置的次波疊加。兩者都運用波的疊加概念：窄雙縫近似為兩個分立次波源，單縫內有連續分布的次波源，因此可形成不同的明暗分布。"
+     ],
+     "figure": "subsource_compare",
+     "figCaption": "雙狹縫與單狹縫的次波源分布（本教材自製概念比較圖）"
+    },
+    {
+     "type": "write",
+     "qid": "c3_core5",
+     "title": "核心問題：圖樣不同，原理相同？",
+     "mascot": "這題要同時說出：圖樣差異、次波源分布差異、共同的疊加機制。",
+     "prompt": "雙狹縫干涉與單狹縫繞射的屏幕圖樣不同，為什麼仍可以用同一個次波疊加原理解釋？",
+     "fields": [
+      {
+       "key": "text",
+       "label": "我的解釋",
+       "rows": 5,
+       "ph": "兩者的圖樣差異是……；次波源分布的差異是……；共同的機制是……"
+      }
+     ]
+    },
+    {
+     "type": "recap",
+     "title": "本章重點回顧",
+     "selfCheck": "用一句話說出本章的核心理解：",
+     "core": "光通過窄縫後，縫內不同位置的次波在各方向增強或減弱，形成繞射的明暗分布。",
+     "conditions": "中央寬亮紋與旁側亮紋的敘述採遠場、均勻單色照明條件。「縫越窄，展開越明顯」須固定波長並限於本教材尺度，不能外推到所有縫寬與近場情況。",
+     "misconceptions": [
+      "把單狹縫圖樣當成狹縫的放大影像。",
+      "認為繞射與干涉是兩套毫無關聯的原理。",
+      "只說光彎曲而未交代次波源分布與疊加。"
+     ],
+     "ref": {
+      "label": "OpenStax University Physics Vol. 3 §4.1（2026-09-04查核）",
+      "url": "https://openstax.org/books/university-physics-volume-3/pages/4-1-single-slit-diffraction",
+      "focus": "查核重點：遠場假設、次波疊加、中央亮紋與縫寬關係。"
+     }
+    },
+    {
+     "type": "review",
+     "qid": "quiz_c3",
+     "title": "知識點統整：測驗、複習單與單字卡",
+     "mascot": "這一章結束了！先做個小測驗，我會幫你找出還不熟悉的概念，再生成你專屬的複習學習單和單字卡。"
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "short": "薄膜與統整",
+   "title": "薄膜干涉與單元統整",
+   "period": "對應第3節後段（應用統整）",
+   "core": "透明薄膜兩表面的反射光可發生干涉；薄膜色彩與狹縫明暗分布均可用光的波動模型解釋。",
+   "question": "何以支持波動性？",
+   "goal": "比較薄膜反射光，引用光學證據完成論證並說明界限（學習目標3、4）",
+   "steps": [
+    {
+     "type": "intro",
+     "title": "這一章要回答：沒有顏料，顏色從哪來？",
+     "mascot": "最後一章！我們把疊加概念帶進生活，再把整個單元收束成一段有證據的論證。",
+     "paras": [
+      "承接第2、3章：應用疊加概念並收束全章。",
+      "核心問題：透明薄膜沒有彩色顏料，為什麼仍會出現彩色區帶？到達眼睛的是哪兩路光？"
+     ]
+    },
+    {
+     "type": "photos",
+     "title": "生活中的薄膜色彩",
+     "mascot": "先看真實現象。注意：這些是照片（證據），等一下的剖面圖才是模型。",
+     "photos": [
+      "soap_bubble",
+      "soap_film",
+      "oil_film"
+     ]
+    },
+    {
+     "type": "predict",
+     "qid": "c4_p1",
+     "title": "先預測：顏色從哪裡來？",
+     "mascot": "先說說你的直覺。",
+     "prompt": "肥皂膜本身是透明的，你認為它的彩色是怎麼來的？",
+     "options": [
+      "肥皂裡有彩色顏料",
+      "只是光的折射",
+      "薄膜反射的光彼此疊加",
+      "其他"
+     ],
+     "reason": "我這樣預測，因為："
+    },
+    {
+     "type": "sim",
+     "sim": "film",
+     "qid": "c4_sim_film",
+     "title": "Q3 薄膜剖面：哪兩束反射光會重疊？",
+     "mascot": "點選剖面圖中的光路，找出「到達眼睛、會互相干涉」的兩路反射光。再拖動膜厚，看看色彩分布。",
+     "note": "剖面為本教材自製模型示意（未依比例）。本節只作定性說明，不計算膜厚或特定顏色。"
+    },
+    {
+     "type": "read",
+     "title": "教材正文：薄膜干涉",
+     "mascot": "讀完想想：只比較「路徑長短」夠嗎？還漏了什麼？",
+     "paras": [
+      "白光照到肥皂膜或水面油膜時，部分光在上表面反射，另一部分進入薄膜，在下表面反射後再離開。兩部分光朝同一觀察方向傳播時，可以互相干涉。",
+      "干涉結果與膜厚、折射率、觀察角度及光的波長有關，也受到反射時振動相位改變的影響。相位描述振動進行到哪個階段；折射率則反映光在介質中的傳播速度。膜厚隨位置變化時，白光中的不同波長可能在不同位置增強或減弱，因而呈現彩色分布。"
+     ]
+    },
+    {
+     "type": "write",
+     "qid": "c4_q3",
+     "title": "Q3 解釋薄膜色彩",
+     "mascot": "這題只要指出兩路反射光，並定性說明干涉——不需要膜厚或顏色計算。",
+     "prompt": "指出薄膜上、下界面的兩路反射光，並以干涉定性解釋為什麼會出現彩色區帶。",
+     "fields": [
+      {
+       "key": "paths",
+       "label": "兩路反射光分別是：",
+       "rows": 2,
+       "ph": "第一路……；第二路……"
+      },
+      {
+       "key": "why",
+       "label": "為什麼會出現色彩：",
+       "rows": 3,
+       "ph": ""
+      }
+     ]
+    },
+    {
+     "type": "read",
+     "title": "延伸：牛頓環與抗反射鍍膜",
+     "mascot": "「抗反射」的意思是所有光都不反射嗎？讀讀看條件。",
+     "paras": [
+      "牛頓環與薄空氣膜的干涉有關；抗反射鍍膜利用干涉，在設計的波長與角度範圍內降低反射。這些例子都能連回光波疊加的概念。",
+      "「抗反射」有波長與角度範圍，不表示所有光都不反射。"
+     ],
+     "photos": [
+      "newton_rings",
+      "ar_lens"
+     ]
+    },
+    {
+     "type": "sort",
+     "qid": "c4_sort",
+     "title": "生活現象分類：機制要個別判斷",
+     "mascot": "把每個現象放到你認為的機制。小心：不是所有彩色都是薄膜干涉！",
+     "cats": [
+      "薄膜干涉",
+      "週期結構或其他繞射",
+      "可能同時涉及干涉、繞射與散射（結構色）"
+     ],
+     "items": [
+      {
+       "id": "soap",
+       "photo": "soap_bubble",
+       "name": "肥皂泡的彩色",
+       "ans": 0,
+       "fb": "上、下表面兩路反射光干涉。"
+      },
+      {
+       "id": "oil",
+       "photo": "oil_film",
+       "name": "水面油膜",
+       "ans": 0,
+       "fb": "薄膜干涉生活情境；連結上下界面反射光。"
+      },
+      {
+       "id": "newton",
+       "photo": "newton_rings",
+       "name": "牛頓環",
+       "ans": 0,
+       "fb": "與薄空氣膜的干涉有關。"
+      },
+      {
+       "id": "ar",
+       "photo": "ar_lens",
+       "name": "抗反射鏡片",
+       "ans": 0,
+       "fb": "利用干涉，在設計的波長與角度範圍內降低反射。"
+      },
+      {
+       "id": "cd",
+       "photo": "cd",
+       "name": "光碟上的彩虹色",
+       "ans": 1,
+       "fb": "光碟歸入週期結構繞射，不歸為薄膜干涉；光碟色彩不能一律歸為薄膜干涉。"
+      },
+      {
+       "id": "spike",
+       "photo": "hubble",
+       "name": "望遠鏡照片中星星的尖峰",
+       "ans": 1,
+       "fb": "繞射科技情境；尖峰不是恆星真實外形。"
+      },
+      {
+       "id": "peacock",
+       "photo": "peacock",
+       "name": "孔雀羽毛",
+       "ans": 2,
+       "fb": "結構色延伸；避免只以顏料或單一機制解釋。"
+      },
+      {
+       "id": "morpho",
+       "photo": "morpho",
+       "name": "藍閃蝶翅膀",
+       "ans": 2,
+       "fb": "結構色可能同時涉及干涉、繞射與散射。"
+      }
+     ]
+    },
+    {
+     "type": "table",
+     "title": "統整：三種現象，同一個疊加概念",
+     "mascot": "回看雙狹縫與單狹縫的實拍：直進模型漏掉了什麼？",
+     "head": [
+      "",
+      "雙狹縫干涉",
+      "單狹縫繞射",
+      "薄膜干涉"
+     ],
+     "rows": [
+      [
+       "參與疊加的光",
+       "兩個分立次波源",
+       "縫內連續分布的次波源",
+       "上表面反射光＋下表面反射後穿出的光"
+      ],
+      [
+       "屏幕／眼睛看到",
+       "中央附近明暗交替",
+       "中央亮紋較寬較亮，旁側向外減弱",
+       "膜厚不均時呈現彩色分布"
+      ],
+      [
+       "共同原理",
+       "波的疊加：在不同位置增強或減弱",
+       "波的疊加：在不同方向增強或減弱",
+       "波的疊加：不同波長在不同位置增強或減弱"
+      ]
+     ],
+     "paras": [
+      "回顧雙狹縫與單狹縫，雖然參與疊加的次波源分布不同，兩者都形成有規律的明暗分布。這些現象可由波動模型解釋，因此支持光具有波動性。"
+     ]
+    },
+    {
+     "type": "write",
+     "qid": "c4_q5a",
+     "title": "Q5① 統整論證：光具有波動性嗎？",
+     "mascot": "這是全單元最重要的一題。證據要用「真實光學觀察」，不是水波或模擬；也要寫出結論的界限。",
+     "prompt": "雙狹縫干涉與單狹縫繞射如何共同支持光具有波動行為？請連結觀察、次波疊加與波動性，並寫出這項結論的適用範圍。",
+     "fields": [
+      {
+       "key": "ev",
+       "label": "兩項真實光學觀察（註明來源）",
+       "rows": 3,
+       "ph": "觀察一：……（來源）；觀察二：……（來源）"
+      },
+      {
+       "key": "compare",
+       "label": "直進模型 vs 波動模型：誰能解釋？",
+       "rows": 3,
+       "ph": ""
+      },
+      {
+       "key": "limit",
+       "label": "這項結論的界限",
+       "rows": 2,
+       "ph": ""
+      }
+     ]
+    },
+    {
+     "type": "write",
+     "qid": "c4_q5b",
+     "title": "Q5② 反思：哪項證據改變了你的想法？",
+     "noAI": true,
+     "mascot": "最後回顧整個單元的修訂紀錄。如果你曾請小波追問，也說說你採納或拒絕了哪些提問、為什麼。",
+     "prompt": "寫出你學習前後的想法，以及讓你改變的證據；若用了小波追問，說明採納或拒絕的理由。",
+     "fields": [
+      {
+       "key": "before",
+       "label": "學習前我認為：",
+       "rows": 2,
+       "ph": ""
+      },
+      {
+       "key": "after",
+       "label": "現在我認為（以及改變我的證據）：",
+       "rows": 3,
+       "ph": ""
+      },
+      {
+       "key": "ai",
+       "label": "小波追問：我採納／拒絕了＿＿，理由是＿＿",
+       "rows": 2,
+       "ph": "沒有使用可略過"
+      }
+     ]
+    },
+    {
+     "type": "recap",
+     "title": "單元總回顧",
+     "selfCheck": "用一句話說出整個單元的核心結論：",
+     "core": "光的干涉與繞射形成有規律的明暗分布，可用波的疊加與惠更斯原理解釋，因此支持光具有波動性。回顧雙狹縫與單狹縫，雖然參與疊加的次波源分布不同，兩者都形成有規律的明暗分布；薄膜色彩也能連回光波疊加。",
+     "conditions": "以透明薄膜的反射光作定性說明；不能只比較幾何路徑而忽略反射相位。「抗反射」有波長與角度範圍，不表示所有光都不反射。波動性證據也不等於否定光的粒子性；干涉與繞射支持波動行為，不能據此說明光的全部性質。",
+     "misconceptions": [
+      "把顏色歸因於顏料或只歸因於折射。",
+      "只記得「薄膜干涉」名詞，卻無法指出兩路反射光。",
+      "光碟色彩一律歸為薄膜干涉。",
+      "只寫「因為光是波」而沒有證據與比較；把水波或模擬當成支持光的主要實證。",
+      "過度宣稱波動模型已解釋光的一切。"
+     ],
+     "ref": {
+      "label": "OpenStax University Physics Vol. 3 §3.4（2026-09-04查核）",
+      "url": "https://openstax.org/books/university-physics-volume-3/pages/3-4-interference-in-thin-films",
+      "focus": "查核重點：兩表面反射、反射相位及膜厚對干涉的影響。"
+     }
+    },
+    {
+     "type": "review",
+     "qid": "quiz_c4",
+     "title": "知識點統整：測驗、複習單與單字卡",
+     "mascot": "這一章結束了！先做個小測驗，我會幫你找出還不熟悉的概念，再生成你專屬的複習學習單和單字卡。"
+    }
+   ]
+  }
+ ],
+ "photos": {
+  "bench_kit": {
+   "file": "第2節/真實實驗照片/光凳器材組_Waifer-X_Cuesta-College_CC-BY-2.0.jpg",
+   "kind": "器材照片",
+   "use": "實驗前器材辨認；不宣稱照片為本次實驗組。",
+   "credit": "Waifer X／Cuesta College｜CC BY 2.0",
+   "url": "https://commons.wikimedia.org/wiki/File:Optical_Bench_educational_Kit_-_Cuesta_College.jpg",
+   "author": "Waifer X／Cuesta College",
+   "license": "CC BY 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/2.0/deed.zh-hant",
+   "commonsTitle": "File:Optical Bench educational Kit - Cuesta College.jpg"
+  },
+  "bench_setup": {
+   "file": "第2節/真實實驗照片/光凳實際架設_Cantons-de-lEst_CC-BY-SA-4.0.jpg",
+   "kind": "架設照片",
+   "use": "實驗前建立空間配置概念。",
+   "credit": "Cantons-de-l'Est｜CC BY-SA 4.0",
+   "url": "https://commons.wikimedia.org/wiki/File:Banc_optique_-_exemple_de_montage_01.jpg",
+   "author": "Cantons-de-l'Est",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hant",
+   "commonsTitle": "File:Banc optique - exemple de montage 01.jpg"
+  },
+  "double_red": {
+   "file": "第2節/真實實驗照片/雙狹縫干涉_紅光實拍_Bryan-Tong-Minh_PD.jpg",
+   "kind": "實拍",
+   "use": "632.8 nm 紅光雙狹縫實拍。觀察主要證據；先於理想模型呈現。",
+   "credit": "Bryan Tong Minh｜Public Domain",
+   "url": "https://commons.wikimedia.org/wiki/File:Subwavelength_slits.JPG",
+   "author": "Bryan Tong Minh",
+   "license": "Public Domain",
+   "licenseUrl": "",
+   "commonsTitle": "File:Subwavelength slits.JPG"
+  },
+  "single_blue": {
+   "file": "第3節/真實照片/單狹縫繞射_藍光雷射_Xyqorophibian_CC-BY-SA-4.0.jpg",
+   "kind": "實拍",
+   "use": "單狹縫觀察主要證據；與理想圖樣並列比較。",
+   "credit": "Xyqorophibian｜CC BY-SA 4.0",
+   "url": "https://commons.wikimedia.org/wiki/File:Blue_laser_single_slit_diffraction_photo.jpg",
+   "author": "Xyqorophibian",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hant",
+   "commonsTitle": "File:Blue laser single slit diffraction photo.jpg"
+  },
+  "slit_adjustable": {
+   "file": "第3節/真實照片/可調式單狹縫器_Jan-Krieger_CC-BY-SA-3.0.jpg",
+   "kind": "器材照片",
+   "use": "器材辨認；照片尺度不代表課堂狹縫尺度。",
+   "credit": "Jan Krieger｜CC BY-SA 3.0",
+   "url": "https://commons.wikimedia.org/wiki/File:Xy_adjustable_optical_slit.jpg",
+   "author": "Jan Krieger",
+   "license": "CC BY-SA 3.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/deed.zh-hant",
+   "commonsTitle": "File:Xy adjustable optical slit.jpg"
+  },
+  "bench_setup3": {
+   "file": "第3節/真實照片/光凳實際架設_Cantons-de-lEst_CC-BY-SA-4.0.jpg",
+   "kind": "架設照片",
+   "use": "單狹縫實驗器材配置參照。",
+   "credit": "Cantons-de-l'Est｜CC BY-SA 4.0",
+   "url": "https://commons.wikimedia.org/wiki/File:Banc_optique_-_exemple_de_montage_01.jpg",
+   "author": "Cantons-de-l'Est",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hant",
+   "commonsTitle": "File:Banc optique - exemple de montage 01.jpg"
+  },
+  "ar_lens": {
+   "file": "第3節/真實照片/一般鏡片與抗反射鏡片_Maximilian-Schoenherr_CC0.jpg",
+   "kind": "應用實拍",
+   "use": "薄膜干涉科技應用補充。",
+   "credit": "Maximilian Schönherr｜CC0",
+   "url": "https://commons.wikimedia.org/wiki/File:Reflective_and_anti-reflective_lens.jpg",
+   "author": "Maximilian Schönherr",
+   "license": "CC0",
+   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.zh-hant",
+   "commonsTitle": "File:Reflective and anti-reflective lens.jpg"
+  },
+  "cd": {
+   "file": "第3節/真實照片/光碟繞射_Hapecko_CC-BY-SA-4.0.jpg",
+   "kind": "生活實拍",
+   "use": "生活中的繞射；不歸為薄膜干涉。",
+   "credit": "Hapecko｜CC BY-SA 4.0",
+   "url": "https://commons.wikimedia.org/wiki/File:CD_rainbow.jpg",
+   "author": "Hapecko",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hant",
+   "commonsTitle": "File:CD rainbow.jpg"
+  },
+  "peacock": {
+   "file": "第3節/真實照片/教科書補充/孔雀羽毛_Bernard-Spragg_CC0.jpg",
+   "kind": "延伸照片",
+   "use": "結構色延伸；避免只以顏料或單一機制解釋。",
+   "credit": "Bernard Spragg. NZ｜CC0",
+   "url": "https://commons.wikimedia.org/wiki/File:Peacock_feathers._(20779300743).jpg",
+   "author": "Bernard Spragg. NZ",
+   "license": "CC0",
+   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.zh-hant",
+   "commonsTitle": "File:Peacock feathers. (20779300743).jpg"
+  },
+  "hubble": {
+   "file": "第3節/真實照片/教科書補充/望遠鏡繞射尖峰_ESA-Hubble_CC-BY-4.0.jpg",
+   "kind": "延伸照片",
+   "use": "繞射科技情境；尖峰不是恆星真實外形。",
+   "credit": "ESA/Hubble & NASA｜CC BY 4.0",
+   "url": "https://commons.wikimedia.org/wiki/File:A_slice_of_Sagittarius.jpg",
+   "author": "ESA/Hubble & NASA",
+   "license": "CC BY 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/deed.zh-hant",
+   "commonsTitle": "File:A slice of Sagittarius.jpg"
+  },
+  "newton_rings": {
+   "file": "第3節/真實照片/教科書補充/牛頓環_Ulfbastel_PD.jpg",
+   "kind": "延伸照片",
+   "use": "薄膜干涉延伸現象。",
+   "credit": "Ulfbastel｜Public Domain",
+   "url": "https://commons.wikimedia.org/wiki/File:Newton_rings.jpg",
+   "author": "Ulfbastel",
+   "license": "Public Domain",
+   "licenseUrl": "",
+   "commonsTitle": "File:Newton rings.jpg"
+  },
+  "morpho": {
+   "file": "第3節/真實照片/教科書補充/藍閃蝶_Alias0591_CC-BY-2.0.jpg",
+   "kind": "延伸照片",
+   "use": "結構色延伸；可能同時涉及干涉、繞射與散射。",
+   "credit": "Alias 0591（Rene Mensen）｜CC BY 2.0",
+   "url": "https://commons.wikimedia.org/wiki/File:Blue_Morpho_butterfly_(Morpho_peleides)_wings_open.jpg",
+   "author": "Alias 0591（Rene Mensen）",
+   "license": "CC BY 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/2.0/deed.zh-hant",
+   "commonsTitle": "File:Blue Morpho butterfly (Morpho peleides) wings open.jpg"
+  },
+  "oil_film": {
+   "file": "第3節/真實照片/水面油膜_gambier20_CC-BY-2.0.jpg",
+   "kind": "生活實拍",
+   "use": "薄膜干涉生活情境；連結上下界面反射光。",
+   "credit": "gambier20｜CC BY 2.0",
+   "url": "https://commons.wikimedia.org/wiki/File:Rainbow_Pollution.jpg",
+   "author": "gambier20",
+   "license": "CC BY 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/2.0/deed.zh-hant",
+   "commonsTitle": "File:Rainbow Pollution.jpg"
+  },
+  "soap_bubble": {
+   "file": "第3節/真實照片/肥皂泡薄膜干涉_Pksois23_CC-BY-SA-4.0.jpg",
+   "kind": "生活實拍",
+   "use": "薄膜干涉生活情境。",
+   "credit": "Pksois23｜CC BY-SA 4.0",
+   "url": "https://commons.wikimedia.org/wiki/File:Thin_Film_Interference_Soap_Bubble.jpg",
+   "author": "Pksois23",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hant",
+   "commonsTitle": "File:Thin Film Interference Soap Bubble.jpg"
+  },
+  "soap_film": {
+   "file": "第3節/真實照片/肥皂膜薄膜干涉_Yaroslav-Ulyushin_CC-BY-4.0.jpg",
+   "kind": "生活實拍",
+   "use": "薄膜厚度不均與色彩分布的定性觀察。",
+   "credit": "Yaroslav Ulyushin｜CC BY 4.0",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D1%80%D0%B5%D0%BD%D1%86%D0%B8%D1%8F_%D0%B2_%D1%82%D0%BE%D0%BD%D0%BA%D0%BE%D0%B9_%D0%BC%D1%8B%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9_%D0%BF%D0%BB%D1%91%D0%BD%D0%BA%D0%B5.jpg",
+   "author": "Yaroslav Ulyushin",
+   "license": "CC BY 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/deed.zh-hant",
+   "commonsTitle": "File:Интерференция в тонкой мыльной плёнке.jpg"
+  }
+ },
+ "extension": {
+  "stages": {
+   "head": [
+    "規劃面向",
+    "目前單元",
+    "第一進階年段",
+    "第二進階年段"
+   ],
+   "rows": [
+    [
+     "年級／階段",
+     "高一",
+     "高中進階物理",
+     "大一普通物理"
+    ],
+    [
+     "學習主題",
+     "波疊加、水波干涉、雙狹縫與繞射。",
+     "雙狹縫、單狹縫、光柵與薄膜量化。",
+     "相量、解析度、干涉量測與影像分析。"
+    ],
+    [
+     "理解／能力",
+     "解釋亮暗分布；區分觀察與模型，以證據修訂解釋。",
+     "由路程差求條紋位置；估算波長、縫寬與膜厚。",
+     "比較強度與可見度；估算解析度，以條紋量測位移。"
+    ],
+    [
+     "內容範圍",
+     "定性比較干涉、繞射與薄膜；不推導公式。",
+     "先學條紋位置與近似；再學薄膜反射相位，暫不求完整強度分布。",
+     "相量、多縫、牛頓環與量測；不做微積分推導或完整成像模型。"
+    ],
+    [
+     "表徵與工具",
+     "波形圖、實拍與模擬；先預測、再觀察解釋。",
+     "幾何圖、三角函數、小角度近似與直尺。",
+     "相量圖、強度曲線、試算表擬合與殘差。"
+    ],
+    [
+     "必要先備",
+     "波長、振幅、直進、反射與折射。",
+     "疊加、相位、三角比、比例與單位換算。",
+     "高中干涉繞射公式、向量、三角函數與基礎誤差概念。"
+    ]
+   ]
+  },
+  "groups": [
+   {
+    "name": "第一進階年段　高中量化",
+    "items": [
+     {
+      "title": "原延伸教材 第1至4章",
+      "sum": "建立條紋位置、光柵與薄膜的量化模型。",
+      "src": "高三選修物理教材",
+      "use": "閱讀／練習　先備：三角比、疊加概念"
+     },
+     {
+      "title": "薄膜干涉",
+      "sum": "以泡膜、油膜連結光程差與反射相位。",
+      "src": "陽明交大光電系",
+      "url": "https://dop.nycu.edu.tw/ch/page.html?tID=260",
+      "use": "補充閱讀　先備：折射、相位概念"
+     },
+     {
+      "title": "極光巧克力 炫目登場",
+      "sum": "由微細紋理與光碟虹彩，認識光柵應用。",
+      "src": "臺灣網路科教館　江淑芳、陳坤龍",
+      "url": "https://www.ntsec.edu.tw/liveSupply/detail.aspx?a=6829&cat=6843&lid=19944&p=1&print=1",
+      "use": "閱讀／觀察　先備：繞射、光柵概念"
+     }
+    ]
+   },
+   {
+    "name": "第二進階年段　大一波動光學",
+    "items": [
+     {
+      "title": "University Physics Vol. 3",
+      "sum": "選讀第3章與第4章 4.1至4.5節，補強強度與解析度。",
+      "src": "OpenStax",
+      "links": [
+       {
+        "label": "第3章",
+        "url": "https://openstax.org/books/university-physics-volume-3/pages/3-introduction"
+       },
+       {
+        "label": "第4章",
+        "url": "https://openstax.org/books/university-physics-volume-3/pages/4-introduction"
+       }
+      ],
+      "use": "自主選讀　先備：三角函數及英文閱讀"
+     },
+     {
+      "title": "偵測重力波的關鍵技術",
+      "sum": "認識精密反射鏡鍍膜如何提升重力波探測器的靈敏度。",
+      "src": "國立自然科學博物館",
+      "url": "https://web3.nmns.edu.tw/Exhibits/112/the-gravity-realm/unit-4.html",
+      "use": "應用閱讀　先備：薄膜、干涉儀概念"
+     }
+    ]
+   }
+  ],
+  "note": "高一先用現象圖；高中量化及大一內容依學生先備選讀。",
+  "basic": [
+   [
+    "領域／科目",
+    "自然科學／物理"
+   ],
+   [
+    "單元名稱",
+    "干涉與繞射"
+   ],
+   [
+    "目前年段",
+    "高一"
+   ],
+   [
+    "授課節數",
+    "3節，每節50分鐘"
+   ],
+   [
+    "核心概念",
+    "以波的疊加解釋干涉與繞射，並用光學觀察支持波動模型。"
+   ]
+  ],
+  "intro": "填寫示範　高一定性理解 → 高中量化 → 大一波動光學。各階段選列資源；點選來源可開啟原教材或網頁。"
+ },
+ "concepts": [
+  {
+   "id": "superposition",
+   "ch": 1,
+   "term": "疊加原理",
+   "def": "在理想線性介質中，同一位置、同一時刻的合位移等於各波位移之和；相遇結束後，兩列脈衝仍各自沿原方向傳播。"
+  },
+  {
+   "id": "displacement",
+   "ch": 1,
+   "term": "位移",
+   "def": "某一時刻偏離平衡位置的程度。"
+  },
+  {
+   "id": "amplitude",
+   "ch": 1,
+   "term": "振幅",
+   "def": "週期振動中偏離平衡位置的最大程度。某一刻位移為零，不能據此認定振幅為零。"
+  },
+  {
+   "id": "constructive",
+   "ch": 1,
+   "term": "完全建設性干涉",
+   "def": "對同一位置的兩列同頻率週期波而言，若振動步調相同，合振幅最大。"
+  },
+  {
+   "id": "destructive",
+   "ch": 1,
+   "term": "完全破壞性干涉",
+   "def": "若振幅相等且振動步調恰好相反，合振幅為零。應寫「位移相消」，避免說成總能量消失。"
+  },
+  {
+   "id": "antinode",
+   "ch": 1,
+   "term": "腹線與節線",
+   "def": "振幅極大的位置連成腹線，振幅極小的位置連成節線；這些線不是向外移動的波前，判讀須看一段時間的起伏。"
+  },
+  {
+   "id": "coherent1",
+   "ch": 1,
+   "term": "穩定干涉的條件",
+   "def": "兩波源位置固定、同頻率且相位關係固定，使固定位置的到達相位差保持穩定；完全相消還要求到達處振幅相等。"
+  },
+  {
+   "id": "huygens",
+   "ch": 2,
+   "term": "惠更斯原理",
+   "def": "波面上各點可視為發出次波的波源，次波包絡形成新波面；在窄縫近似下，兩條狹縫可視為兩個次波源。"
+  },
+  {
+   "id": "coherent",
+   "ch": 2,
+   "term": "相干波源",
+   "def": "頻率相同並保持固定相位關係的波源。同一穩定單色光適當照明兩縫時，兩縫即為相干波源。"
+  },
+  {
+   "id": "phase",
+   "ch": 2,
+   "term": "相位",
+   "def": "描述週期振動進行到哪個階段。"
+  },
+  {
+   "id": "dark_fringe",
+   "ch": 2,
+   "term": "亮紋與暗紋",
+   "def": "兩列光波同相到達互相增強形成亮紋；反相到達互相減弱，振幅相等時可完全相消形成暗紋。暗紋不表示光波未到達。"
+  },
+  {
+   "id": "time_avg",
+   "ch": 2,
+   "term": "時間平均光強度",
+   "def": "眼睛無法追蹤光的快速振動，看到的是時間平均的光強度，因此形成亮紋與暗紋。"
+  },
+  {
+   "id": "straight_model",
+   "ch": 2,
+   "term": "直進模型的限制",
+   "def": "在單純幾何直進模型下，預期屏幕為兩條狹縫的投影，無法說明實際多條明暗交替的分布。"
+  },
+  {
+   "id": "evidence_model",
+   "ch": 2,
+   "term": "證據與模型",
+   "def": "有來源可回查的光學實拍是證據；水波是類比，波前圖與模擬是模型，不能取代真實觀察。"
+  },
+  {
+   "id": "diffraction",
+   "ch": 3,
+   "term": "單狹縫繞射",
+   "def": "單色光通過窄單狹縫後向側方展開；遠場下中央亮紋較寬、較亮，兩側亮紋較窄、逐漸變弱，亮紋之間由暗紋隔開。"
+  },
+  {
+   "id": "farfield",
+   "ch": 3,
+   "term": "遠場",
+   "def": "屏幕足夠遠，使縫內各處到同一觀察點的傳播方向可近似平行。"
+  },
+  {
+   "id": "subsource_dist",
+   "ch": 3,
+   "term": "次波源分布",
+   "def": "窄雙縫近似為兩個分立次波源；單縫內有連續分布的次波源，因此形成不同的明暗分布。"
+  },
+  {
+   "id": "slit_width",
+   "ch": 3,
+   "term": "縫寬與中央亮紋",
+   "def": "相同波長與遠場條件下，於本教材尺度內縮小縫寬，繞射展開角度增加、中央亮紋變寬；不能外推到所有縫寬與近場情況。"
+  },
+  {
+   "id": "not_image",
+   "ch": 3,
+   "term": "圖樣不是狹縫影像",
+   "def": "屏幕上的條紋是光在不同位置的強度分布，不是狹縫的放大影像。"
+  },
+  {
+   "id": "same_principle",
+   "ch": 3,
+   "term": "干涉與繞射的共同原理",
+   "def": "雙狹縫干涉與單狹縫繞射都運用波的疊加概念，差別在參與疊加的次波源分布。"
+  },
+  {
+   "id": "thin_film",
+   "ch": 4,
+   "term": "薄膜干涉",
+   "def": "白光照到薄膜時，上表面直接反射的光與進入薄膜、在下表面反射後穿出的光，在同一觀察方向重疊干涉。"
+  },
+  {
+   "id": "film_factors",
+   "ch": 4,
+   "term": "影響薄膜干涉的因素",
+   "def": "干涉結果與膜厚、折射率、觀察角度及光的波長有關，也受到反射時振動相位改變的影響；不能只比較幾何路徑。"
+  },
+  {
+   "id": "refr_index",
+   "ch": 4,
+   "term": "折射率",
+   "def": "反映光在介質中的傳播速度。"
+  },
+  {
+   "id": "antireflect",
+   "ch": 4,
+   "term": "抗反射鍍膜",
+   "def": "利用干涉，在設計的波長與角度範圍內降低反射；不表示所有光都不反射。"
+  },
+  {
+   "id": "newton",
+   "ch": 4,
+   "term": "牛頓環",
+   "def": "與薄空氣膜的干涉有關，是薄膜干涉的延伸現象。"
+  },
+  {
+   "id": "cd_grating",
+   "ch": 4,
+   "term": "光碟的彩色",
+   "def": "光碟歸入週期結構繞射，不歸為薄膜干涉。"
+  },
+  {
+   "id": "structural",
+   "ch": 4,
+   "term": "結構色",
+   "def": "如孔雀羽毛、藍閃蝶；可能同時涉及干涉、繞射與散射，避免只以顏料或單一機制解釋。"
+  },
+  {
+   "id": "wave_limits",
+   "ch": 4,
+   "term": "波動性的結論與界限",
+   "def": "雙狹縫與單狹縫的實拍支持光在這些情境中具有波動行為；這不等於否定光的粒子性，也不能說明光的全部性質。"
+  }
+ ],
+ "qidConcepts": {
+  "c1_q2a": [
+   "superposition",
+   "constructive"
+  ],
+  "c1_q2b": [
+   "destructive"
+  ],
+  "c1_q2c": [
+   "superposition"
+  ],
+  "c1_q5": [
+   "amplitude",
+   "displacement"
+  ],
+  "c1_q6": [
+   "antinode",
+   "amplitude"
+  ],
+  "c1_core2": [
+   "coherent1",
+   "antinode"
+  ],
+  "c2_core3": [
+   "straight_model"
+  ],
+  "c3_width": [
+   "slit_width",
+   "not_image"
+  ]
+ },
+ "topicConcepts": {
+  "collide": "superposition",
+  "vanish": "destructive",
+  "amplitude": "amplitude",
+  "addrule": "superposition",
+  "colorline": "antinode",
+  "stable": "coherent1",
+  "nodestill": "antinode",
+  "darknolight": "dark_fringe",
+  "straight": "straight_model",
+  "modelphoto": "evidence_model",
+  "energy2": "dark_fringe",
+  "coherent": "coherent",
+  "waterlight": "time_avg",
+  "justwave": "evidence_model",
+  "unrelated": "same_principle",
+  "image3": "not_image",
+  "bend": "subsource_dist",
+  "width": "slit_width",
+  "pigment": "thin_film",
+  "twopaths": "thin_film",
+  "cdfilm": "cd_grating",
+  "antireflect": "antireflect",
+  "overclaim": "wave_limits",
+  "simevidence": "evidence_model",
+  "formula": "film_factors"
+ },
+ "sortConcepts": {
+  "soap": "thin_film",
+  "oil": "thin_film",
+  "newton": "newton",
+  "ar": "antireflect",
+  "cd": "cd_grating",
+  "spike": "diffraction",
+  "peacock": "structural",
+  "morpho": "structural"
+ },
+ "quiz": {
+  "1": [
+   {
+    "concept": "destructive",
+    "q": "兩個等大、一上一下的脈衝在理想線性介質中完全重疊的那一刻，P 點的合成位移是？",
+    "opts": [
+     "＋2",
+     "0",
+     "－2",
+     "兩個脈衝永久消失了"
+    ],
+    "ans": 1,
+    "hint": "回到繩波模擬按「反向」，在 t＝5 秒暫停看 P 點回饋。"
+   },
+   {
+    "concept": "superposition",
+    "q": "兩個脈衝通過彼此之後會怎樣？",
+    "opts": [
+     "反彈回去",
+     "各自沿原方向繼續傳播，形狀不變",
+     "合併成一個脈衝",
+     "一起消失"
+    ],
+    "ans": 1,
+    "hint": "追蹤同一個脈衝 A：相遇前、重疊、通過後，它往哪裡走？"
+   },
+   {
+    "concept": "amplitude",
+    "q": "水面上某一點「這一刻」位移為零，可以判定它的振幅為零嗎？",
+    "opts": [
+     "可以",
+     "不能，要看一個週期內的最大位移",
+     "只要那一點顏色淺就可以"
+    ],
+    "ans": 1,
+    "hint": "位移和振幅的定義差在哪裡？一個看某一刻，一個看什麼？"
+   },
+   {
+    "concept": "antinode",
+    "q": "關於腹線與節線，下列何者正確？",
+    "opts": [
+     "腹線是向外傳播的波前",
+     "振幅極大的位置連成腹線，判讀要看一段時間的起伏",
+     "某一刻最亮的地方就是腹線"
+    ],
+    "ans": 1,
+    "hint": "在水波模擬切到「振幅分布」：這些線會往外移動嗎？"
+   },
+   {
+    "concept": "coherent1",
+    "q": "兩個水波源要形成位置穩定的干涉分布，需要什麼條件？",
+    "opts": [
+     "兩波源振幅一定不同",
+     "位置固定、頻率相同且相位關係固定",
+     "只要兩波源靠得很近"
+    ],
+    "ans": 1,
+    "hint": "如果兩波源的相位關係一直變，同一位置的到達相位差會穩定嗎？"
+   }
+  ],
+  "2": [
+   {
+    "concept": "dark_fringe",
+    "q": "雙狹縫屏幕上的暗紋 D 處，發生了什麼？",
+    "opts": [
+     "沒有任何光到達",
+     "兩列光波都到達，反相疊加而減弱",
+     "光被擋板擋住了"
+    ],
+    "ans": 1,
+    "hint": "在 B／D 模型連出兩狹縫到 D 的路徑：兩路都能到達嗎？"
+   },
+   {
+    "concept": "coherent",
+    "q": "說兩條狹縫是「相干波源」，意思是？",
+    "opts": [
+     "兩縫發出的光頻率相同、相位關係固定",
+     "兩縫的寬度一樣",
+     "兩縫發出不同顏色的光"
+    ],
+    "ans": 0,
+    "hint": "重讀「惠更斯原理與相干波源」那一段：相干需要哪兩個條件？"
+   },
+   {
+    "concept": "time_avg",
+    "q": "我們在屏幕上看到的亮暗，是什麼？",
+    "opts": [
+     "光的瞬時振動位移",
+     "時間平均的光強度",
+     "兩條狹縫的放大影像"
+    ],
+    "ans": 1,
+    "hint": "眼睛能追得上光的快速振動嗎？"
+   },
+   {
+    "concept": "evidence_model",
+    "q": "支持「光」具有波動行為的主要證據，應該是？",
+    "opts": [
+     "水波模擬",
+     "波前示意圖",
+     "有來源可回查的光學實拍"
+    ],
+    "ans": 2,
+    "hint": "水波、模型、實拍——哪一個是光自己留下的紀錄？"
+   },
+   {
+    "concept": "straight_model",
+    "q": "如果光只沿直線前進，雙狹縫後的屏幕預期會出現？",
+    "opts": [
+     "多條等距的明暗紋",
+     "主要只有兩條狹縫的投影",
+     "整片亮度均勻"
+    ],
+    "ans": 1,
+    "hint": "想像光像子彈一樣直直穿過兩條縫，會打在屏幕哪裡？"
+   }
+  ],
+  "3": [
+   {
+    "concept": "diffraction",
+    "q": "遠場、均勻單色照明下，單狹縫繞射的圖樣是？",
+    "opts": [
+     "中央亮紋較寬較亮，兩側亮紋較窄、逐漸變弱",
+     "所有亮紋等寬等亮",
+     "只有一條和縫一樣寬的亮紋"
+    ],
+    "ans": 0,
+    "hint": "回看單狹縫的藍光實拍：中央和兩側有什麼不同？"
+   },
+   {
+    "concept": "subsource_dist",
+    "q": "單狹縫與雙狹縫的次波源分布，何者正確？",
+    "opts": [
+     "單縫是兩個分立次波源，雙縫是連續分布",
+     "雙縫近似兩個分立次波源，單縫內是連續分布的次波源",
+     "兩者都沒有次波源"
+    ],
+    "ans": 1,
+    "hint": "在「次波源分布」模擬切換兩種裝置，數一數點的分布。"
+   },
+   {
+    "concept": "slit_width",
+    "q": "在本教材尺度內、固定波長與遠場條件，縮小縫寬會使中央亮紋？",
+    "opts": [
+     "變窄",
+     "變寬",
+     "不變"
+    ],
+    "ans": 1,
+    "hint": "如果條紋只是狹縫的影子，縫變窄會怎樣？實際模擬中又是怎樣？"
+   },
+   {
+    "concept": "same_principle",
+    "q": "干涉與繞射的關係是？",
+    "opts": [
+     "兩套毫無關聯的原理",
+     "都可用次波疊加解釋，差在次波源分布",
+     "繞射只是光彎曲，不涉及疊加"
+    ],
+    "ans": 1,
+    "hint": "兩種裝置裡，參與疊加的是什麼？"
+   }
+  ],
+  "4": [
+   {
+    "concept": "thin_film",
+    "q": "透明肥皂膜的彩色主要來自？",
+    "opts": [
+     "肥皂裡的顏料",
+     "上表面反射光與下表面反射後穿出的光互相干涉",
+     "只是光的折射"
+    ],
+    "ans": 1,
+    "hint": "在薄膜剖面圖裡，哪兩路光最後朝同一方向到達眼睛？"
+   },
+   {
+    "concept": "film_factors",
+    "q": "判斷薄膜干涉的結果時，只比較兩路光的幾何路徑長短夠嗎？",
+    "opts": [
+     "夠",
+     "不夠，還要考慮反射時振動相位的改變等因素"
+    ],
+    "ans": 1,
+    "hint": "重讀「薄膜干涉」正文第二段，列出所有影響因素。"
+   },
+   {
+    "concept": "cd_grating",
+    "q": "光碟上的彩虹色，應歸入哪一類機制？",
+    "opts": [
+     "薄膜干涉",
+     "週期結構繞射",
+     "顏料"
+    ],
+    "ans": 1,
+    "hint": "光碟表面是一層薄膜，還是有規律的細紋？"
+   },
+   {
+    "concept": "antireflect",
+    "q": "抗反射鍍膜的作用是？",
+    "opts": [
+     "讓所有光都不反射",
+     "在設計的波長與角度範圍內降低反射",
+     "用顏料把光吸收掉"
+    ],
+    "ans": 1,
+    "hint": "「抗反射」有沒有適用範圍？"
+   },
+   {
+    "concept": "wave_limits",
+    "q": "本單元可以得到的結論是？",
+    "opts": [
+     "證明光只是波，已說明光的一切",
+     "干涉與繞射的實拍支持光在這些情境中具有波動行為，但不等於說明光的全部性質"
+    ],
+    "ans": 1,
+    "hint": "這個結論是根據哪些觀察？這些觀察能涵蓋光的全部性質嗎？"
+   }
+  ]
+ },
+ "map": {
+  "prompts": [
+   {
+    "key": "interference",
+    "q": "看到「干涉」這兩個字，你字面上第一直覺想到什麼？",
+    "chips": [
+     "互相妨礙",
+     "兩個東西撞在一起",
+     "互相抵消",
+     "變得更強"
+    ],
+    "follow": "可以再多說一點嗎？你想到的是兩個「什麼」在互相干涉？"
+   },
+   {
+    "key": "diffraction",
+    "q": "那「繞射」呢？你的第一直覺是什麼？",
+    "chips": [
+     "繞過障礙物",
+     "光會轉彎",
+     "從縫裡透出來",
+     "散開"
+    ],
+    "follow": "你想像中，是什麼東西在「繞」？它繞過了什麼？"
+   },
+   {
+    "key": "life",
+    "q": "生活中有沒有什麼例子或畫面，你覺得可能跟干涉或繞射有關？（可以寫好幾個，用逗號隔開）",
+    "chips": [
+     "水面漣漪",
+     "肥皂泡的顏色",
+     "光碟的彩虹",
+     "門縫透出的光",
+     "雷射光",
+     "耳機降噪",
+     "彩虹"
+    ],
+    "follow": "那個畫面裡，有什麼東西在動、在變亮或變暗、或出現顏色嗎？"
+   }
+  ],
+  "nodes": [
+   {
+    "id": "core",
+    "label": "光的波動性",
+    "ch": 0,
+    "x": 500,
+    "y": 300
+   },
+   {
+    "id": "n1",
+    "label": "波的疊加",
+    "ch": 1,
+    "x": 220,
+    "y": 130,
+    "concept": "superposition"
+   },
+   {
+    "id": "n1b",
+    "label": "建設性／破壞性干涉",
+    "ch": 1,
+    "x": 90,
+    "y": 230,
+    "concept": "constructive"
+   },
+   {
+    "id": "n1c",
+    "label": "腹線與節線",
+    "ch": 1,
+    "x": 250,
+    "y": 250,
+    "concept": "antinode"
+   },
+   {
+    "id": "n1d",
+    "label": "位移≠振幅",
+    "ch": 1,
+    "x": 90,
+    "y": 70,
+    "concept": "amplitude"
+   },
+   {
+    "id": "n2",
+    "label": "雙狹縫干涉",
+    "ch": 2,
+    "x": 780,
+    "y": 130,
+    "concept": "dark_fringe"
+   },
+   {
+    "id": "n2b",
+    "label": "惠更斯原理・次波源",
+    "ch": 2,
+    "x": 910,
+    "y": 60,
+    "concept": "huygens"
+   },
+   {
+    "id": "n2c",
+    "label": "相干波源",
+    "ch": 2,
+    "x": 920,
+    "y": 220,
+    "concept": "coherent"
+   },
+   {
+    "id": "n2d",
+    "label": "實拍證據 vs 模型",
+    "ch": 2,
+    "x": 740,
+    "y": 250,
+    "concept": "evidence_model"
+   },
+   {
+    "id": "n3",
+    "label": "單狹縫繞射",
+    "ch": 3,
+    "x": 220,
+    "y": 470,
+    "concept": "diffraction"
+   },
+   {
+    "id": "n3b",
+    "label": "次波源分布",
+    "ch": 3,
+    "x": 90,
+    "y": 380,
+    "concept": "subsource_dist"
+   },
+   {
+    "id": "n3c",
+    "label": "縫寬與中央亮紋",
+    "ch": 3,
+    "x": 110,
+    "y": 550,
+    "concept": "slit_width"
+   },
+   {
+    "id": "n4",
+    "label": "薄膜干涉",
+    "ch": 4,
+    "x": 780,
+    "y": 470,
+    "concept": "thin_film"
+   },
+   {
+    "id": "n4b",
+    "label": "兩路反射光・反射相位",
+    "ch": 4,
+    "x": 920,
+    "y": 380,
+    "concept": "film_factors"
+   },
+   {
+    "id": "n4c",
+    "label": "生活應用：光碟・結構色・鍍膜",
+    "ch": 4,
+    "x": 900,
+    "y": 550,
+    "concept": "structural"
+   },
+   {
+    "id": "n4d",
+    "label": "結論的界限",
+    "ch": 4,
+    "x": 600,
+    "y": 560,
+    "concept": "wave_limits"
+   }
+  ],
+  "edges": [
+   [
+    "core",
+    "n1"
+   ],
+   [
+    "core",
+    "n2"
+   ],
+   [
+    "core",
+    "n3"
+   ],
+   [
+    "core",
+    "n4"
+   ],
+   [
+    "n1",
+    "n1b"
+   ],
+   [
+    "n1",
+    "n1c"
+   ],
+   [
+    "n1",
+    "n1d"
+   ],
+   [
+    "n2",
+    "n2b"
+   ],
+   [
+    "n2",
+    "n2c"
+   ],
+   [
+    "n2",
+    "n2d"
+   ],
+   [
+    "n3",
+    "n3b"
+   ],
+   [
+    "n3",
+    "n3c"
+   ],
+   [
+    "n4",
+    "n4b"
+   ],
+   [
+    "n4",
+    "n4c"
+   ],
+   [
+    "core",
+    "n4d"
+   ],
+   [
+    "n1",
+    "n2"
+   ],
+   [
+    "n2",
+    "n3"
+   ],
+   [
+    "n3",
+    "n4"
+   ]
+  ],
+  "rules": [
+   {
+    "kw": [
+     "水波",
+     "漣漪",
+     "水面",
+     "池塘",
+     "丟石頭",
+     "石頭",
+     "雨滴"
+    ],
+    "node": "n1c",
+    "scene": "ripple",
+    "transfer": true,
+    "why": "第1章會用兩個點波源的水波，看腹線與節線。",
+    "photo": null
+   },
+   {
+    "kw": [
+     "繩",
+     "跳繩",
+     "海浪",
+     "波浪",
+     "浪"
+    ],
+    "node": "n1",
+    "scene": "rope",
+    "transfer": true,
+    "why": "第1章用繩波脈衝建立「疊加」的規則。"
+   },
+   {
+    "kw": [
+     "撞",
+     "碰撞",
+     "打架",
+     "妨礙",
+     "阻擋",
+     "衝突",
+     "擋住",
+     "彈回"
+    ],
+    "node": "n1",
+    "scene": "collide",
+    "transfer": true,
+    "misc": true,
+    "why": "這是常見的直覺！第1章會檢查：波相遇真的像物體互撞嗎？"
+   },
+   {
+    "kw": [
+     "抵消",
+     "相消",
+     "互相消",
+     "變弱",
+     "減弱",
+     "消失"
+    ],
+    "node": "n1b",
+    "scene": "cancel",
+    "transfer": true,
+    "why": "第1章會學「破壞性干涉」——也會問：相消是真的消失嗎？"
+   },
+   {
+    "kw": [
+     "加強",
+     "變強",
+     "增強",
+     "疊加",
+     "相加",
+     "變大"
+    ],
+    "node": "n1b",
+    "scene": "rope",
+    "transfer": true,
+    "why": "第1章會學「建設性干涉」與疊加原理。"
+   },
+   {
+    "kw": [
+     "雷射",
+     "條紋",
+     "亮暗",
+     "明暗",
+     "光點"
+    ],
+    "node": "n2",
+    "scene": "laser",
+    "transfer": true,
+    "why": "第2章用紅光雷射通過雙狹縫，看屏幕上的亮暗紋。",
+    "photo": "double_red"
+   },
+   {
+    "kw": [
+     "門縫",
+     "縫",
+     "窄縫",
+     "指縫",
+     "窗縫",
+     "百葉窗",
+     "透出"
+    ],
+    "node": "n3",
+    "scene": "slit",
+    "transfer": true,
+    "why": "第3章看光通過窄縫後如何展開。",
+    "photo": "single_blue"
+   },
+   {
+    "kw": [
+     "繞過",
+     "轉彎",
+     "彎",
+     "繞",
+     "散開",
+     "擴散"
+    ],
+    "node": "n3",
+    "scene": "slit",
+    "transfer": true,
+    "why": "第3章會追問：光「彎曲」是怎麼發生的？要用次波源和疊加來說明。"
+   },
+   {
+    "kw": [
+     "肥皂",
+     "泡泡",
+     "泡",
+     "油膜",
+     "汽油",
+     "油",
+     "薄膜"
+    ],
+    "node": "n4",
+    "scene": "bubble",
+    "transfer": true,
+    "why": "第4章解釋：透明薄膜沒有顏料，為什麼有顏色？",
+    "photo": "soap_bubble"
+   },
+   {
+    "kw": [
+     "光碟",
+     "CD",
+     "cd",
+     "DVD",
+     "dvd"
+    ],
+    "node": "n4c",
+    "scene": "cd",
+    "transfer": true,
+    "why": "第4章會把光碟和薄膜分開：光碟歸入週期結構繞射。",
+    "photo": "cd"
+   },
+   {
+    "kw": [
+     "孔雀",
+     "蝴蝶",
+     "閃蝶",
+     "羽毛",
+     "甲蟲"
+    ],
+    "node": "n4c",
+    "scene": "feather",
+    "transfer": true,
+    "why": "第4章的結構色：可能同時涉及干涉、繞射與散射。",
+    "photo": "peacock"
+   },
+   {
+    "kw": [
+     "眼鏡",
+     "鏡片",
+     "鍍膜",
+     "鏡頭"
+    ],
+    "node": "n4c",
+    "scene": "lens",
+    "transfer": true,
+    "why": "第4章的抗反射鍍膜。",
+    "photo": "ar_lens"
+   },
+   {
+    "kw": [
+     "星星",
+     "星芒",
+     "望遠鏡",
+     "星光"
+    ],
+    "node": "n4c",
+    "scene": "star",
+    "transfer": true,
+    "why": "第4章分類活動：望遠鏡照片的星星尖峰與繞射有關。",
+    "photo": "hubble"
+   },
+   {
+    "kw": [
+     "顏色",
+     "彩色",
+     "七彩",
+     "色彩"
+    ],
+    "node": "n4",
+    "scene": "bubble",
+    "transfer": true,
+    "why": "第4章會問：顏色一定來自顏料嗎？"
+   },
+   {
+    "kw": [
+     "光"
+    ],
+    "node": "core",
+    "scene": "laser",
+    "transfer": true,
+    "why": "整個單元的主角就是光：它的行為能不能用波來描述？"
+   },
+   {
+    "kw": [
+     "聲音",
+     "喇叭",
+     "耳機",
+     "降噪",
+     "音樂",
+     "回音",
+     "聲波"
+    ],
+    "node": null,
+    "scene": "sound",
+    "transfer": false,
+    "why": "教材沒有討論聲音。先放在旁邊，學完後想想：疊加的規則能不能遷移過去？"
+   },
+   {
+    "kw": [
+     "彩虹"
+    ],
+    "node": null,
+    "scene": "rainbow",
+    "transfer": false,
+    "why": "教材沒有討論彩虹。先放在旁邊，學完薄膜干涉後，再比較看看它們的成因是否相同。"
+   },
+   {
+    "kw": [
+     "訊號",
+     "收訊",
+     "手機",
+     "wifi",
+     "WiFi",
+     "電波",
+     "收音機"
+    ],
+    "node": null,
+    "scene": "sound",
+    "transfer": false,
+    "why": "教材沒有討論電波訊號。先放在旁邊，學完後可以再回來想想。"
+   }
+  ],
+  "scenes": {
+   "ripple": "兩顆石頭同時丟進水面，兩圈圈漣漪交會",
+   "rope": "兩個繩波脈衝相向前進，在中間相遇",
+   "collide": "兩顆球迎面相撞後彈開（字面上的「干涉」）",
+   "cancel": "一上一下的兩個波相遇，某一刻互相抵銷",
+   "laser": "一束紅光穿過兩條細縫，照在牆上",
+   "slit": "光從一道窄縫透出來，照在後面的牆上",
+   "bubble": "肥皂泡表面流動的彩色",
+   "cd": "光碟背面反射出的彩虹色",
+   "feather": "孔雀羽毛隨角度變色的光澤",
+   "lens": "鏡片表面淡淡的反光顏色",
+   "star": "照片裡星星周圍放射狀的尖峰",
+   "sound": "兩個喇叭同時發出聲音，聲波向外擴散",
+   "rainbow": "雨後天空的一道彩虹"
+  }
+ },
+ "credits": {
+  "docs": [
+   [
+    "01",
+    "核心教材文本開發表（干涉與繞射示範版）",
+    "四個知識節點的正文、成立條件與查核依據 → 第1–4章正文與章末重點"
+   ],
+   [
+    "02",
+    "單元教案與教學指引（示範版）",
+    "三節課教學設計、提問與評量對應 → 章節流程、教師後台「教案」"
+   ],
+   [
+    "03",
+    "紙本學習單開發表（雙狹縫干涉示範版）",
+    "Q1–Q6 題目、參考答案與引導 → 第2章、教師後台「學習單判讀」"
+   ],
+   [
+    "04",
+    "延伸學習資源教材公版（示範版）",
+    "三階段學習進程與延伸資源 → 「我的紀錄」延伸學習資源"
+   ],
+   [
+    "05",
+    "核心教學題目（干涉與繞射示範版）",
+    "7 張核心題目卡 → 各章核心問題、小波追問規則、教師後台「題目卡」"
+   ],
+   [
+    "06",
+    "自然科領域評量雙向細目表（示範版）",
+    "前測、隨堂測驗、後測細目表 → 章末測驗的評量目標、教師後台「細目表」"
+   ],
+   [
+    "07A",
+    "多模態輔助教材素材清單（範例版）",
+    "模擬、圖片與照片的用途與授權 → 各章照片與模擬、本頁照片出處"
+   ],
+   [
+    "07B",
+    "多模態輔助教材需求腳本（波的疊加示範版）",
+    "圖片、動畫、模擬需求腳本 → 第1章繩波模擬與動畫解說"
+   ],
+   [
+    "08",
+    "數位教材整合規劃表（雙狹縫填寫示例）",
+    "Q4 作答、AI 追問、修訂與匯出 → 第2章 Q4 解釋板、學習紀錄"
+   ],
+   [
+    "10",
+    "常見學習困難與引導策略（干涉與繞射填寫示例）",
+    "L1–L3 引導提示 → 小波的追問內容"
+   ]
+  ],
+  "designer": "江長屹／台師大科教所（範例v1.0／115.09.04）",
+  "refs": [
+   {
+    "label": "OpenStax University Physics Vol. 1 §16.5 Interference of Waves",
+    "url": "https://openstax.org/books/university-physics-volume-1/pages/16-5-interference-of-waves",
+    "note": "第1章查核依據（01，2026-09-04查核）"
+   },
+   {
+    "label": "OpenStax University Physics Vol. 3 §3.1 Young's Double-Slit Interference",
+    "url": "https://openstax.org/books/university-physics-volume-3/pages/3-1-youngs-double-slit-interference",
+    "note": "第2章查核依據（01、05，2026-09-04查核）"
+   },
+   {
+    "label": "OpenStax University Physics Vol. 3 §4.1 Single-Slit Diffraction",
+    "url": "https://openstax.org/books/university-physics-volume-3/pages/4-1-single-slit-diffraction",
+    "note": "第3章查核依據（01、05，2026-09-04查核）"
+   },
+   {
+    "label": "OpenStax University Physics Vol. 3 §3.4 Interference in Thin Films",
+    "url": "https://openstax.org/books/university-physics-volume-3/pages/3-4-interference-in-thin-films",
+    "note": "第4章查核依據（01、05，2026-09-04查核）"
+   },
+   {
+    "label": "教育部《十二年國民基本教育課程綱要－自然科學領域》表二（第9頁）",
+    "url": "",
+    "note": "評量認知層次依據（06）；學習表現與學習內容代碼見教師後台教案（02）"
+   }
+  ],
+  "design": [
+   {
+    "label": "SERC地科動畫腳本",
+    "url": "https://cdn.serc.carleton.edu/files/NAGTWorkshops/video/isostasy_storyboard_draft_b.pdf",
+    "note": "08 格式參考"
+   },
+   {
+    "label": "Monash教材案例",
+    "url": "https://www.monash.edu/learning-teaching/teachhq/be-inspired/teaching-practice-examples/productville-pharmaceutical-science-case-studies",
+    "note": "08 格式參考"
+   },
+   {
+    "label": "數位教學指引3.0示例",
+    "url": "https://school.tc.edu.tw/open-message/064607/get-file/66d572f5b15de80d5c01b874",
+    "note": "08 格式參考"
+   },
+   {
+    "label": "教育部診斷教學案例（2020）",
+    "url": "https://www.moe.gov.tw/News_Content.aspx?n=9E7AC85F1954DDA8&s=2D60AD02820F68AD",
+    "note": "10 設計參考"
+   },
+   {
+    "label": "國教院自然科補充教材示例（2013）",
+    "url": "https://epaper.naer.edu.tw/edm?content_no=1697&edm_no=63",
+    "note": "10 設計參考"
+   }
+  ],
+  "selfmade": [
+   "繩波疊加模擬、水波干涉模擬、雙狹縫 B／D 次波模型、次波源分布模擬、薄膜剖面模擬：依 07A、07B、08 的需求以程式重新繪製（本教材自製，模型示意，非實拍）。",
+   "惠更斯原理示意、雙狹縫／單狹縫實驗架設位置示意、兩種完全重疊比較圖、次波源分布比較圖：依 07A、07B 描述以 SVG 重繪（本教材自製）。",
+   "學習地圖中的「生成想像畫面」：依學生輸入的關鍵字以程式繪製的示意圖（本教材自製，非實拍）。",
+   "互動小人物「小波」：本教材自製 SVG 角色。",
+   "教師後台中的 07B 分鏡草圖、比較圖、模擬介面示意圖與 08 畫面草圖：取自原設計文件附圖（本教材自製）。"
+  ]
+ }
+}

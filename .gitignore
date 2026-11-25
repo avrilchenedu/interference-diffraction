@@ -1,0 +1,6 @@
+# 學生學習紀錄（含個人作答），不要上傳
+data/
+*.db
+__pycache__/
+.DS_Store
+.claude/
