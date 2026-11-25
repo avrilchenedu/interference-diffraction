@@ -484,3 +484,8 @@ label.btn input[type=file] { display: none; }
 @media print { .site-foot { display: none; } }
 
 [hidden] { display: none !important; }
+@media (min-width: 721px) and (max-width: 1060px) {
+  .topbar { flex-wrap: wrap; row-gap: 4px; }
+  .gprog { margin-left: auto; }
+  .chap-nav { order: 3; flex-basis: 100%; }
+}
